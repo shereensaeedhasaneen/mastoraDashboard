@@ -1,7 +1,7 @@
 @include('layouts.header')
 
 <section class="pt-5 pb-5"
-    style="background: url(img/Group\ 52.png) #eee no-repeat; background-size: cover; background-position: center;">
+    style="background:  #f7f7f7;">
     <!--Popup-->
     <!--Approave Modal -->
     <!--تعيين الشريك-->

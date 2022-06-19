@@ -9,7 +9,7 @@
         </div>
     </div>
 </section>
-  <section class="pt-5 pb-5 " style="background: url(/mastora/img/Group\ 52.png) #F7F7F7 no-repeat; background-size: cover; background-position: center;">
+  <section class="pt-5 pb-5 " style="background:  #F7F7F7;">
 
         <div class="container-fauld">
 

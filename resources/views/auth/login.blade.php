@@ -87,10 +87,10 @@
         </div>
     </nav>
 
-    <section class="height-90" style="background: url(/mastora/img/Group\ 52.png) #F7F7F7 no-repeat; background-size: cover; background-position: center;">
+    <section class="height-90" style="background:  #F7F7F7;">
       <div class="container-fluid">
         <div class="row d-flex justify-content-center" style="margin: auto;">
-          <div class="col-6">
+          <div class="col-7">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <p class="login-title">تسجيل الدخول</p>
