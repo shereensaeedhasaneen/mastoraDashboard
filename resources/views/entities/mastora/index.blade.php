@@ -1,6 +1,6 @@
 @include('layouts.header')
 <section class="pt-5 pb-5"
-    style="background: url(/mastora/img/Group\ 52.png) #F7F7F7 no-repeat; background-size: cover; background-position: center;">
+    style="background:  #F7F7F7;">
     <!--Popup-->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">

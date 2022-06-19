@@ -269,7 +269,7 @@
       background-color: transparent;
       border:none;
   }
-  .table-responsive {
+  .table-responsive , table{
     background: #fff;
     border-radius: 16px;
     box-shadow: 0px 16px 50px rgba(78, 125, 150, 0.1);
