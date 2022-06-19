@@ -70,7 +70,7 @@
         </div>
     </div>
     <!-- End Delete Alert-->
-    
+
     <div class="container-fauld">
 
         <div class="row">
@@ -85,34 +85,54 @@
                     <div class="tab-pane fade show active" id="All-applications" role="tabpanel"
                         aria-labelledby="All-applications-tab">
                         <div class="row mb-2">
-                            <div class="col-sm-4">
+                            <div class="col-sm-5 ps-2 search-container">
                                 <!--<input class="search"  placeholder="بحث">
                                     <svg id="Research" xmlns="http://www.w3.org/2000/svg" width="26.503" height="26.602" viewBox="0 0 26.503 26.602">
                                     <path id="Vector" d="M25.3,19.712l-2.76-2.827a4.107,4.107,0,0,0-4.533-.76l-1.2-1.2a9.333,9.333,0,1,0-1.88,1.88l1.187,1.187a4,4,0,0,0,.707,4.613l2.827,2.827a4.021,4.021,0,1,0,5.653-5.72ZM13.992,14.059a6.667,6.667,0,1,1,1.45-2.165,6.667,6.667,0,0,1-1.45,2.165Zm9.427,9.427a1.333,1.333,0,0,1-1.893,0L18.7,20.659a1.339,1.339,0,1,1,1.893-1.893l2.827,2.827a1.333,1.333,0,0,1,0,1.893Z" transform="translate(0 0)" fill="#df2024"/>
                                     </svg>-->
 
                                     <form style="display: contents" action="/partners-search" method="POST" >
-                                <div class="input-group mb-3 search">
-                                    <button class="btn btn-outline-secondary btn-icon" type="button"
-                                        id="button-addon2"><svg id="Research" xmlns="http://www.w3.org/2000/svg"
-                                            width="26.503" height="26.602" viewBox="0 0 26.503 26.602">
-                                            <path id="Vector"
-                                                d="M25.3,19.712l-2.76-2.827a4.107,4.107,0,0,0-4.533-.76l-1.2-1.2a9.333,9.333,0,1,0-1.88,1.88l1.187,1.187a4,4,0,0,0,.707,4.613l2.827,2.827a4.021,4.021,0,1,0,5.653-5.72ZM13.992,14.059a6.667,6.667,0,1,1,1.45-2.165,6.667,6.667,0,0,1-1.45,2.165Zm9.427,9.427a1.333,1.333,0,0,1-1.893,0L18.7,20.659a1.339,1.339,0,1,1,1.893-1.893l2.827,2.827a1.333,1.333,0,0,1,0,1.893Z"
-                                                transform="translate(0 0)" fill="#df2024" />
-                                        </svg></button>
-                                    <input type="text" class="form-control " placeholder="بحث"
-                                        aria-label="Recipient's username" name="name" aria-describedby="button-addon2">
 
-                                </div>
-                                    
+                                            <div class="input-group mb-3 search">
+                                                <button class="btn btn-outline-secondary btn-icon" type="button"
+                                                    id="button-addon2">
+                                                    <svg id="Research" xmlns="http://www.w3.org/2000/svg" width="26.503"
+                                                        height="26.602" viewBox="0 0 26.503 26.602">
+                                                        <path id="Vector"
+                                                            d="M25.3,19.712l-2.76-2.827a4.107,4.107,0,0,0-4.533-.76l-1.2-1.2a9.333,9.333,0,1,0-1.88,1.88l1.187,1.187a4,4,0,0,0,.707,4.613l2.827,2.827a4.021,4.021,0,1,0,5.653-5.72ZM13.992,14.059a6.667,6.667,0,1,1,1.45-2.165,6.667,6.667,0,0,1-1.45,2.165Zm9.427,9.427a1.333,1.333,0,0,1-1.893,0L18.7,20.659a1.339,1.339,0,1,1,1.893-1.893l2.827,2.827a1.333,1.333,0,0,1,0,1.893Z"
+                                                            transform="translate(0 0)" fill="#b68b25" />
+                                                    </svg>
+                                                </button>
+                                                <input type="text" class="form-control" name="searchValue" placeholder="بحث"
+                                                    required aria-label="Recipient's username" aria-describedby="button-addon2">
+
+                                                <button type="submit" class="search-btn">بحث</button>
+
+                                            </div>
+
+
                             </div>
 
                             <div class="col-sm-4 d-flex justify-content-center">
-                                <button class="search-btn">بحث</button>
+                                <div class="dropdown dropMenuQuestion">
+                                    <button class="btn  choose-btn btn-sm dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        اختر البيانات التي تريد اظهارها
+                                    </button>
+                                    <ul class="dropdown-menu question-menu-ul"
+                                        aria-labelledby="dropdownMenuButton1">
+                                        <!--<li><a class="dropdown-item showHideColumn checkColumn" data-columnindex="0">#</a> </li>-->
+                                        <li><a class="dropdown-item showHideColumn checkColumn"
+                                                data-columnindex="1">اسم الشريك</a> </li>
+                                        <li><a class="dropdown-item showHideColumn checkColumn"
+                                                data-columnindex="2">الفرع التابع له</a> </li>
+
+                                    </ul>
+                                </div>
                             </div>
                             @csrf
                         </form>
-                            <div class="col-sm-4 d-flex justify-content-end">
+                            <div class="col-sm-3 d-flex justify-content-end">
                                 <div class="num-order">
                                     <button class="approave border-0 w-100 h-100 bg-transparent" data-bs-toggle="modal" data-bs-target="#addPartnerModel"> اضافة شريك</button>
                                 </div>
@@ -142,32 +162,42 @@
                                             <td class="clickable pt-39 fw-bold text-wrap">
                                                 {{ $user->bank->name }}
                                             </td>
-                                            
-                                            
+
+
                                             <td class="pt-39">
                                                 <div class="dropdown">
-                                                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="29.442" height="7.043"
-                                                            viewBox="0 0 29.442 7.043">
-                                                            <path id="Vector"
-                                                                d="M14.722,0A3.522,3.522,0,1,0,17.21,1.031,3.522,3.522,0,0,0,14.722,0ZM3.522,0A3.522,3.522,0,1,0,6.01,1.031,3.522,3.522,0,0,0,3.522,0Zm22.4,0A3.522,3.522,0,1,0,28.41,1.031,3.522,3.522,0,0,0,25.922,0Z"
-                                                                fill="#454545"></path>
-                                                        </svg>
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                        
-                                                        <li>
+
+
+
+
                                                             <button class="approave border-0 w-100 h-100 bg-transparent modify-button"  data-bs-toggle="modal" data-attr-id="{{$user->id}}" data-bs-target="#editPartnerModel">
-                                                                تعديل</button>
-                                                        </li>
+                                                                <svg class="me-1" id="Component_38_17"
+                                                                    data-name="Component 38 – 17"
+                                                                    xmlns="http://www.w3.org/2000/svg" width="27"
+                                                                    height="27" viewBox="0 0 27 27">
+                                                                    <g id="Path_12455" data-name="Path 12455" fill="none">
+                                                                        <path
+                                                                            d="M13.5,0A13.5,13.5,0,1,1,0,13.5,13.5,13.5,0,0,1,13.5,0Z"
+                                                                            stroke="none" />
+                                                                        <path
+                                                                            d="M 13.5 1 C 10.16113090515137 1 7.022100448608398 2.300230026245117 4.661159515380859 4.661159515380859 C 2.300230026245117 7.022100448608398 1 10.16113090515137 1 13.5 C 1 16.83887100219727 2.300230026245117 19.9778995513916 4.661159515380859 22.33882904052734 C 7.022100448608398 24.69976997375488 10.16113090515137 26 13.5 26 C 16.83887100219727 26 19.97789001464844 24.69976997375488 22.33882904052734 22.33882904052734 C 24.69976997375488 19.97789001464844 26 16.83887100219727 26 13.5 C 26 10.16113090515137 24.69976997375488 7.022100448608398 22.33882904052734 4.661159515380859 C 19.9778995513916 2.300230026245117 16.83887100219727 1 13.5 1 M 13.5 0 C 20.95584106445312 0 27 6.044149398803711 27 13.5 C 27 20.95584106445312 20.95584106445312 27 13.5 27 C 6.044149398803711 27 0 20.95584106445312 0 13.5 C 0 6.044149398803711 6.044149398803711 0 13.5 0 Z"
+                                                                            stroke="none" fill="#b68b25" />
+                                                                    </g>
+                                                                    <g id="Group_16660" data-name="Group 16660" transform="translate(3462.684 -808.464)">
+                                                                    <g id="edit" transform="translate(-3454.684 814.464)">
+                                                                    <path  id="Form_24" data-name="Form 24" d="M2.429,13.9a2.535,2.535,0,0,1-1.687-.746A3.311,3.311,0,0,1,.081,11.24C0,10.431,0,9.415,0,8.073S0,5.717.079,4.908A3.31,3.31,0,0,1,.733,2.99a2.534,2.534,0,0,1,1.688-.747,24.049,24.049,0,0,1,2.785-.089h.014a.511.511,0,0,1,.467.546.507.507,0,0,1-.48.53,24.021,24.021,0,0,0-2.679.083A1.706,1.706,0,0,0,1.4,3.751a2.258,2.258,0,0,0-.384,1.278c-.07.7-.072,1.7-.072,3.044s0,2.34.075,3.043A2.258,2.258,0,0,0,1.41,12.4a1.709,1.709,0,0,0,1.125.438,24.046,24.046,0,0,0,2.672.083,23.891,23.891,0,0,0,2.672-.084A1.71,1.71,0,0,0,9,12.392a2.262,2.262,0,0,0,.388-1.279c.071-.7.075-1.7.075-3.04V8.058a.477.477,0,1,1,.947.015c0,1.34,0,2.354-.082,3.162a3.313,3.313,0,0,1-.659,1.918,2.537,2.537,0,0,1-1.688.748,23.532,23.532,0,0,1-2.778.092H5.064A22.493,22.493,0,0,1,2.429,13.9Zm2.3-4.755a.509.509,0,0,1-.473-.538V7A.579.579,0,0,1,4.4,6.616L10.079.158a.434.434,0,0,1,.67,0l1.42,1.614a.591.591,0,0,1,0,.761L6.488,8.992a.447.447,0,0,1-.335.157Zm.473-1.93v.853h.751L9.745,3.768l-.751-.853ZM9.663,2.153l.751.853.751-.853L10.414,1.3Z" transform="translate(0 0)" fill="#b68b25"/>
+                                                                    </g>
+                                                                </g>
+                                                                </svg>
+                                                            </button>
+
                                                         @if (false)
-                                                            <li><a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> تعديل</a>
-                                                            </li>
-                                                            <li><a class="dropdown-item" href="#CloseModal" class="trigger-btn"
-                                                                    data-bs-toggle="modal"> <i class="fas fa-trash"></i> حذف</a></li>
+                                                            <a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> تعديل</a>
+
+                                                            <a class="dropdown-item" href="#CloseModal" class="trigger-btn"
+                                                                    data-bs-toggle="modal"> <i class="fas fa-trash"></i> حذف</a>
                                                         @endif
-                                                    </ul>
+
                                                 </div>
 
                                             </td>
