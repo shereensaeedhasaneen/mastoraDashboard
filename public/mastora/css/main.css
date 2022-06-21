@@ -353,8 +353,8 @@
     background: #01AF08 !important;
     color: #fff;
     font-family: "Tajawal";
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 12px;
     /*select{
 
             color: $green-color;
@@ -399,8 +399,8 @@
     background: #0061B4 !important;
     color: #fff;
     font-family: "Tajawal";
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 12px;
     border-radius: 14px;
     height: 30px;
     /*select{
@@ -464,8 +464,8 @@
     background-color: #D80404 !important;
     color: #fff;
     font-family: "Tajawal";
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 12px;
     /*select{
             color: $mainCol;
             font-family: 'Cairo';
