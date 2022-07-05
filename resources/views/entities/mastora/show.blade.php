@@ -1,12 +1,11 @@
 @include('layouts.header')
 
-<section class="pt-5 pb-5"
-    style="background:  #f7f7f7;">
+<section class="pt-5 pb-5" style="background:  #f7f7f7;">
     <!--Popup-->
     <!--Approave Modal -->
     <!--تعيين الشريك-->
-    <div class="modal fade" id="appeoave-staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="appeoave-staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="/assign-partner/{{ $loan->id }}" method="POST" style="display: contents">
@@ -57,10 +56,10 @@
                         <div class="col-12 mb-4">
                             <p class="notes mb-2 mt-2"> تعيين الاخصائي </p>
                             <select name="" id="modal-niceSelect" class="modal-niceSelect">
-                                <option selected >تعيين الاخصائي</option>
+                                <option selected>تعيين الاخصائي</option>
                                 @foreach ($partners as $partener)
-                                <option value="{{ $partener->id }}">{{ $partener->name }}</option>
-                            @endforeach
+                                    <option value="{{ $partener->id }}">{{ $partener->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -167,8 +166,8 @@
     <!-- end Accept Loan Modalpopup-->
 
     <!-- Accept Loan With Reason Modal -->
-    <div class="modal fade" id="Accept-Loan-with-reason-staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="Accept-Loan-with-reason-staticBackdrop" data-bs-backdrop="static"
+        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -257,14 +256,14 @@
     <div class="modal fade" id="resend-Loan-staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form style="display: contents" action="/assign-accounter/{{$loan->id}}" method="POST" >
+            <form style="display: contents" action="/assign-accounter/{{ $loan->id }}" method="POST">
                 <div class="modal-content">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
 
                             <div class="col-12">
-                                <p class="Accept-title mb-4 mt-2"> اعاده دراسه القرض  </p>
+                                <p class="Accept-title mb-4 mt-2"> اعاده دراسه القرض </p>
 
 
                             </div>
@@ -274,11 +273,11 @@
                                 <input type="text" name="notes" class="notes-input" placeholder=" ">
                             </div>
                             <div class="col-12 mb-4">
-                                <p class="notes mb-2 mt-2">  تعيين مدير حساب</p>
+                                <p class="notes mb-2 mt-2"> تعيين مدير حساب</p>
                                 <select name="assigned_id" id="modal-niceSelect" class="modal-niceSelect">
                                     <option selected value="">اختار مدير حساب</option>
-                                    @foreach ($accounters as $acounter )
-                                    <option  value="{{$acounter->id}}">{{$acounter->name}}</option>
+                                    @foreach ($accounters as $acounter)
+                                        <option value="{{ $acounter->id }}">{{ $acounter->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -308,7 +307,8 @@
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="" style="display: contents" method="post" action="/update-loans/{{ $loan->id }}">
+                <form id="" style="display: contents" method="post"
+                    action="/update-loans/{{ $loan->id }}">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -324,7 +324,8 @@
                                     </div>
 
                                     <div class="col-5">
-                                        <p class="notes mb-2 mt-2 fs-18">قيمة القرض المطلوب &nbsp; {{ $loan->price }}
+                                        <p class="notes mb-2 mt-2 fs-18">قيمة القرض المطلوب &nbsp;
+                                            {{ $loan->price }}
                                         </p>
                                     </div>
                                 </div>
@@ -359,7 +360,8 @@
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="" style="display: contents" method="post" action="/update-loans/{{ $loan->id }}">
+                <form id="" style="display: contents" method="post"
+                    action="/update-loans/{{ $loan->id }}">
                     @csrf
                     <div class="modal-body">
                         <div class="row mb-3">
@@ -415,7 +417,8 @@
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="" style="display: contents" method="post" action="/update-loans/{{ $loan->id }}">
+                <form id="" style="display: contents" method="post"
+                    action="/update-loans/{{ $loan->id }}">
                     @csrf
                     <div class="modal-body">
                         <div class="row mb-3">
@@ -561,7 +564,8 @@
                                                 مرفوض
 
                                             </div>
-                                        @elseif($loan->status < 6) <div class="orange">
+                                        @elseif($loan->status < 6)
+                                            <div class="orange">
                                                 قيد الدراسه
 
                                             </div>
@@ -600,8 +604,8 @@
                                                 data-bs-target="#appeoave-staticBackdrop"> تعيين</button>
                                         @endif
                                         @if (auth()->user()->user_type == 1 && $loan->status == 3 && $canEdit)
-                                        <button class="approave" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#specialist-staticBackdrop"> تعيين</button>
+                                            <button class="approave" type="button" data-bs-toggle="modal"
+                                                data-bs-target="#specialist-staticBackdrop"> تعيين</button>
                                         @endif
                                         <!--تعيين اخصائي-->
                                     </div>
@@ -614,52 +618,56 @@
                                     </div>
 
                                     @if ($loan->status > 6)
-                                    <div class="d-none col-lg-4 d-lg-block">
+                                        <div class="d-none col-lg-4 d-lg-block">
 
-                                        <div class="green mt-3">
-                                            تمت الموافقه
-                                            (موافقه نهائيه)
+                                            <div class="green mt-3">
+                                                تمت الموافقه
+                                                (موافقه نهائيه)
+                                            </div>
                                         </div>
-                                    </div>
                                     @endif
 
 
-                                    @if ($loan->status < 6  && auth()->user()->user_type == 3)
-                                    <div class="d-none col-lg-4 d-lg-block">
-                                            <button class="accept-loan test mt-3" type="button" data-bs-toggle="modal"
+                                    @if ($loan->status < 6 && auth()->user()->user_type == 3)
+                                        <div class="d-none col-lg-4 d-lg-block">
+                                            <button class="accept-loan test mt-3" type="button"
+                                                data-bs-toggle="modal"
                                                 data-bs-target="#Accept-Loan-staticBackdrop">الموافقة على
                                                 القرض</button>
 
                                             <button class="reject-loan mb-3" type="button" data-bs-toggle="modal"
                                                 data-bs-target="#ignore-Loan-staticBackdrop">رفض القرض</button>
 
-                                             <!-- Resend Button -->
-                                             <button class="reject-loan Resend-loan mb-3" type="button" data-bs-toggle="modal"
-                                             data-bs-target="#resend-Loan-staticBackdrop">اعاده دراسه القرض </button>
-                                         <!-- End Resend Button -->
-                                    </div>
-                                    @elseif ($loan->status < 6 && $loan->status != 0 && auth()->user()->user_type != 4 && $canEdit  )
+                                            <!-- Resend Button -->
+                                            <button class="reject-loan Resend-loan mb-3" type="button"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#resend-Loan-staticBackdrop">اعاده دراسه القرض
+                                            </button>
+                                            <!-- End Resend Button -->
+                                        </div>
+                                    @elseif ($loan->status < 6 && $loan->status != 0 && auth()->user()->user_type != 4 && $canEdit)
                                         <!-- Accept & Reject Buttons-->
                                         <div class="d-none col-lg-4 d-lg-block">
                                             @if (auth()->user()->user_type > 0)
-                                                <button class="accept-loan mt-3" type="button" data-bs-toggle="modal"
+                                                <button class="accept-loan mt-3" type="button"
+                                                    data-bs-toggle="modal"
                                                     data-bs-target="#Accept-Loan-staticBackdrop">الموافقة على
                                                     القرض</button>
-                                                 <!-- Accept Loan with Reason -->
+                                                <!-- Accept Loan with Reason -->
                                                 {{-- <button class="accept-loan" type="button" data-bs-toggle="modal"
                                                         data-bs-target="#Accept-Loan-with-reason-staticBackdrop">الموافقة على
                                                 القرض</button> --}}
-                                                 <!-- Accept Loan with Reason -->
+                                                <!-- Accept Loan with Reason -->
                                             @endif
 
-                                            @if ($loan->status != 0 && auth()->user()->user_type !=0)
-                                                   <button class="reject-loan mb-3" type="button" data-bs-toggle="modal"
+                                            @if ($loan->status != 0 && auth()->user()->user_type != 0)
+                                                <button class="reject-loan mb-3" type="button"
+                                                    data-bs-toggle="modal"
                                                     data-bs-target="#ignore-Loan-staticBackdrop">رفض القرض</button>
 
 
 
-                                                    <!--Green Accept Div -->
-
+                                                <!--Green Accept Div -->
                                             @endif
 
                                         </div>
@@ -737,16 +745,15 @@
                                                 <h3 class="title mb-3"> بيانات القرض </h3>
                                             </div>
                                             <div class="col-3 data text-break">
-                                                @if (auth()->user()->user_type == 0 && $loan->status !=0 && $loan->status <6)
+                                                @if (auth()->user()->user_type == 0 && $loan->status != 0 && $loan->status < 6)
                                                     <button class="edit" type="button" data-bs-toggle="modal"
                                                         data-bs-target="#mount-of-loan-staticBackdrop"> تعديل
                                                     </button>
-                                                @elseif (auth()->user()->user_type == 2 && $loan->status !=0 && $loan->status <6)
+                                                @elseif (auth()->user()->user_type == 2 && $loan->status != 0 && $loan->status < 6)
                                                     <button class="edit" type="button" data-bs-toggle="modal"
                                                         data-bs-target="#edit-lans-model"> تعديل
                                                     </button>
-
-                                                @elseif(auth()->user()->user_type == 3 && $loan->status !=0 && $loan->status <6)
+                                                @elseif(auth()->user()->user_type == 3 && $loan->status != 0 && $loan->status < 6)
                                                     <button class="edit" type="button" data-bs-toggle="modal"
                                                         data-bs-target="#edit-lans-model2"> تعديل
                                                     </button>
@@ -768,22 +775,26 @@
                                                     @case(1)
                                                         <p>طاقة متجددة </p>
                                                     @break
+
                                                     @case(2)
                                                         <p>قرض صناعي </p>
                                                     @break
+
                                                     @case (3)
                                                         <p>قرض زراعي </p>
                                                     @break
+
                                                     @case (4)
                                                         <p>قرض منزلي </p>
                                                     @break
+
                                                     @case (5)
                                                         <p>قرض خدمات </p>
                                                     @break
+
                                                     @case (6)
                                                         <p>قرض تجاري </p>
                                                     @break
-
                                                 @endswitch
 
                                             </div>
@@ -833,13 +844,14 @@
                                                     @case('personal')
                                                         <p>شخصى </p>
                                                     @break
+
                                                     @case('salary')
                                                         <p>تحويل مرتب </p>
                                                     @break
+
                                                     @case ('organization')
                                                         <p>تحويل معاش </p>
                                                     @break
-
                                                 @endswitch
 
                                             </div>
@@ -868,24 +880,36 @@
                                 <div class="col-11 mt-4 p-0 third-container">
                                     <nav class="p-0">
                                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                            <button class="nav-link active done-icon" id="order-details-tab" data-bs-toggle="tab"
-                                                data-bs-target="#order-details" type="button" role="tab"
-                                                aria-controls="order-details" aria-selected="true">تفاصيل الطلب</button>
-                                            <button class="nav-link done-icon" id="attachments-tab" data-bs-toggle="tab"
-                                                data-bs-target="#attachments" type="button" role="tab"
-                                                aria-controls="attachments" aria-selected="false">المرفقات</button>
-                                            <button class="nav-link" id="social-research-tab"
-                                                data-bs-toggle="tab" data-bs-target="#social-research" type="button"
-                                                role="tab" aria-controls="social-research" aria-selected="false"> بحث
+                                            <button class="nav-link active done-icon" id="order-details-tab"
+                                                data-bs-toggle="tab" data-bs-target="#order-details" type="button"
+                                                role="tab" aria-controls="order-details"
+                                                aria-selected="true">تفاصيل الطلب</button>
+                                            <button class="nav-link done-icon" id="attachments-tab"
+                                                data-bs-toggle="tab" data-bs-target="#attachments" type="button"
+                                                role="tab" aria-controls="attachments"
+                                                aria-selected="false">المرفقات</button>
+                                            <button class="nav-link" id="social-research-tab" data-bs-toggle="tab"
+                                                data-bs-target="#social-research" type="button" role="tab"
+                                                aria-controls="social-research" aria-selected="false"> بحث
                                                 أجتماعى</button>
                                             <button class="nav-link" id="field-inquiry-tab" data-bs-toggle="tab"
                                                 data-bs-target="#field-inquiry" type="button" role="tab"
                                                 aria-controls="field-inquiry" aria-selected="false">استعلام
                                                 ميداني</button>
-                                            <button class="nav-link" id="Feasibility-study-tab"
-                                                data-bs-toggle="tab" data-bs-target="#Feasibility-study" type="button"
-                                                role="tab" aria-controls="Feasibility-study" aria-selected="false">
+                                            <button class="nav-link" id="Feasibility-study-tab" data-bs-toggle="tab"
+                                                data-bs-target="#Feasibility-study" type="button" role="tab"
+                                                aria-controls="Feasibility-study" aria-selected="false">
                                                 دراسة الجدوى
+                                            </button>
+                                            <button class="nav-link dimmed" id="SASS-tab" data-bs-toggle="tab"
+                                                data-bs-target="#SASS" type="button" role="tab"
+                                                aria-controls="SASS" aria-selected="false">
+                                                SASS
+                                            </button>
+                                            <button class="nav-link" id="Iscore-tab" data-bs-toggle="tab"
+                                                data-bs-target="#Iscore" type="button" role="tab"
+                                                aria-controls="Iscore" aria-selected="false">
+                                                Iscore
                                             </button>
                                         </div>
                                     </nav>
@@ -916,16 +940,18 @@
                                                                 @case(0)
                                                                     <p>متزوجة </p>
                                                                 @break
+
                                                                 @case(1)
                                                                     <p> مطلقة </p>
                                                                 @break
+
                                                                 @case (2)
                                                                     <p> ارملة </p>
                                                                 @break
+
                                                                 @case (3)
                                                                     <p> عزباء </p>
                                                                 @break
-
                                                             @endswitch
 
                                                         </div>
@@ -1076,270 +1102,290 @@
 
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                    <!--attachment #1-->
-                                                                    <div class="row mb-3 file-attach-row">
-                                                                        <div class="col-9">
-                                                                            <div class="file-input-container row d-flex align-items-center">
+                                                                <!--attachment #1-->
+                                                                <div class="row mb-3 file-attach-row">
+                                                                    <div class="col-9">
+                                                                        <div
+                                                                            class="file-input-container row d-flex align-items-center">
 
-                                                                                    <svg class="col-2"
-                                                                                                    id="Group_16559"
-                                                                                                    data-name="Group 16559"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    width="25" height="30"
-                                                                                                    viewBox="0 0 38.316 45.979">
-                                                                                                    <path id="Path_12459"
-                                                                                                        data-name="Path 12459"
-                                                                                                        d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
-                                                                                                        transform="translate(-67.168 -844.168)"
-                                                                                                        fill="#27e3ea" />
-                                                                                                    <path id="Path_12460"
-                                                                                                        data-name="Path 12460"
-                                                                                                        d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
-                                                                                                        transform="translate(-70 -847)"
-                                                                                                        fill="#1fbdc3" />
-                                                                                    </svg>
+                                                                            <svg class="col-2" id="Group_16559"
+                                                                                data-name="Group 16559"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="25" height="30"
+                                                                                viewBox="0 0 38.316 45.979">
+                                                                                <path id="Path_12459"
+                                                                                    data-name="Path 12459"
+                                                                                    d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
+                                                                                    transform="translate(-67.168 -844.168)"
+                                                                                    fill="#27e3ea" />
+                                                                                <path id="Path_12460"
+                                                                                    data-name="Path 12460"
+                                                                                    d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
+                                                                                    transform="translate(-70 -847)"
+                                                                                    fill="#1fbdc3" />
+                                                                            </svg>
 
-                                                                                <input type="file" name="national_id_front_file"
-                                                                                    value="{{ $loan->national_id_front_file }}"
-                                                                                    class="sm-input-file" id="sm-ip-1" />
-                                                                                <a href="/file/{{ $loan->national_id_front_file }}"
-                                                                                    target="_blank" class="col-10 span-text">صورة
-                                                                                    صوره بطاقة
-                                                                                    الرقم القومي الأمامية</a>
+                                                                            <input type="file"
+                                                                                name="national_id_front_file"
+                                                                                value="{{ $loan->national_id_front_file }}"
+                                                                                class="sm-input-file"
+                                                                                id="sm-ip-1" />
+                                                                            <a href="/file/{{ $loan->national_id_front_file }}"
+                                                                                target="_blank"
+                                                                                class="col-10 span-text">صورة
+                                                                                صوره بطاقة
+                                                                                الرقم القومي الأمامية</a>
 
-                                                                            </div>
                                                                         </div>
-                                                                        @if($loan->status !=0 && $loan->status <6)
+                                                                    </div>
+                                                                    @if ($loan->status != 0 && $loan->status < 6)
                                                                         <div
                                                                             class="col-3 d-flex justify-content-end align-items-center">
                                                                             <!--<input type="file" class="sm-input-file" id="edit-attach"/>-->
-                                                                            <label class="edit upload-btn" for="sm-ip-1">تعديل
+                                                                            <label class="edit upload-btn"
+                                                                                for="sm-ip-1">تعديل
                                                                             </label>
                                                                         </div>
-                                                                        @endif
+                                                                    @endif
 
-                                                                    </div>
+                                                                </div>
 
-                                                                    <!--attachment #2-->
-                                                                    <div class="row mb-3">
-                                                                        <div class="col-9">
-                                                                            <div class="file-input-container row d-flex align-items-center">
+                                                                <!--attachment #2-->
+                                                                <div class="row mb-3">
+                                                                    <div class="col-9">
+                                                                        <div
+                                                                            class="file-input-container row d-flex align-items-center">
 
-                                                                                    <svg class="col-2"
-                                                                                                    id="Group_16559"
-                                                                                                    data-name="Group 16559"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    width="25" height="30"
-                                                                                                    viewBox="0 0 38.316 45.979">
-                                                                                                    <path id="Path_12459"
-                                                                                                        data-name="Path 12459"
-                                                                                                        d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
-                                                                                                        transform="translate(-67.168 -844.168)"
-                                                                                                        fill="#27e3ea" />
-                                                                                                    <path id="Path_12460"
-                                                                                                        data-name="Path 12460"
-                                                                                                        d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
-                                                                                                        transform="translate(-70 -847)"
-                                                                                                        fill="#1fbdc3" />
-                                                                                    </svg>
+                                                                            <svg class="col-2" id="Group_16559"
+                                                                                data-name="Group 16559"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="25" height="30"
+                                                                                viewBox="0 0 38.316 45.979">
+                                                                                <path id="Path_12459"
+                                                                                    data-name="Path 12459"
+                                                                                    d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
+                                                                                    transform="translate(-67.168 -844.168)"
+                                                                                    fill="#27e3ea" />
+                                                                                <path id="Path_12460"
+                                                                                    data-name="Path 12460"
+                                                                                    d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
+                                                                                    transform="translate(-70 -847)"
+                                                                                    fill="#1fbdc3" />
+                                                                            </svg>
 
-                                                                                <input type="file" name="national_id_end_file"
-                                                                                    value="{{ $loan->national_id_end_file }}"
-                                                                                    class="sm-input-file" id="sm-ip-2" />
-                                                                                <a href="/file/{{ $loan->national_id_end_file }}"
-                                                                                    target="_blank" class="col-10 span-text">صورة
-                                                                                    صوره بطاقة
-                                                                                    الرقم القومي الخلفية</a>
-                                                                            </div>
+                                                                            <input type="file"
+                                                                                name="national_id_end_file"
+                                                                                value="{{ $loan->national_id_end_file }}"
+                                                                                class="sm-input-file"
+                                                                                id="sm-ip-2" />
+                                                                            <a href="/file/{{ $loan->national_id_end_file }}"
+                                                                                target="_blank"
+                                                                                class="col-10 span-text">صورة
+                                                                                صوره بطاقة
+                                                                                الرقم القومي الخلفية</a>
                                                                         </div>
-                                                                        @if($loan->status !=0 && $loan->status <6)
-
-                                                                        <div class="col-3 d-flex justify-content-end align-items-center">
+                                                                    </div>
+                                                                    @if ($loan->status != 0 && $loan->status < 6)
+                                                                        <div
+                                                                            class="col-3 d-flex justify-content-end align-items-center">
                                                                             <!--<input type="file" class="sm-input-file" id="edit-attach"/>-->
-                                                                            <label class="edit upload-btn" for="sm-ip-2">تعديل
+                                                                            <label class="edit upload-btn"
+                                                                                for="sm-ip-2">تعديل
                                                                             </label>
                                                                         </div>
-                                                                        @endif
+                                                                    @endif
 
-                                                                    </div>
+                                                                </div>
 
-                                                                    <!--attachment #3-->
-                                                                    <div class="row mb-3">
-                                                                        <div class="col-9">
-                                                                            <div class="file-input-container row d-flex align-items-center" >
+                                                                <!--attachment #3-->
+                                                                <div class="row mb-3">
+                                                                    <div class="col-9">
+                                                                        <div
+                                                                            class="file-input-container row d-flex align-items-center">
 
-                                                                                <svg class="col-2"
-                                                                                                    id="Group_16559"
-                                                                                                    data-name="Group 16559"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    width="25" height="30"
-                                                                                                    viewBox="0 0 38.316 45.979">
-                                                                                                    <path id="Path_12459"
-                                                                                                        data-name="Path 12459"
-                                                                                                        d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
-                                                                                                        transform="translate(-67.168 -844.168)"
-                                                                                                        fill="#27e3ea" />
-                                                                                                    <path id="Path_12460"
-                                                                                                        data-name="Path 12460"
-                                                                                                        d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
-                                                                                                        transform="translate(-70 -847)"
-                                                                                                        fill="#1fbdc3" />
-                                                                                                </svg>
+                                                                            <svg class="col-2" id="Group_16559"
+                                                                                data-name="Group 16559"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="25" height="30"
+                                                                                viewBox="0 0 38.316 45.979">
+                                                                                <path id="Path_12459"
+                                                                                    data-name="Path 12459"
+                                                                                    d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
+                                                                                    transform="translate(-67.168 -844.168)"
+                                                                                    fill="#27e3ea" />
+                                                                                <path id="Path_12460"
+                                                                                    data-name="Path 12460"
+                                                                                    d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
+                                                                                    transform="translate(-70 -847)"
+                                                                                    fill="#1fbdc3" />
+                                                                            </svg>
 
-                                                                                <input type="file" name="home_service_file"
-                                                                                    value="{{ $loan->home_service_file }}"
-                                                                                    class="sm-input-file" id="sm-ip-3" />
-                                                                                <a href="/file/{{ $loan->home_service_file }}"
-                                                                                    target="_blank" class="col-10 span-text">إيصال
-                                                                                    مرافق خاص بمحل الإقامة</a>
+                                                                            <input type="file"
+                                                                                name="home_service_file"
+                                                                                value="{{ $loan->home_service_file }}"
+                                                                                class="sm-input-file"
+                                                                                id="sm-ip-3" />
+                                                                            <a href="/file/{{ $loan->home_service_file }}"
+                                                                                target="_blank"
+                                                                                class="col-10 span-text">إيصال
+                                                                                مرافق خاص بمحل الإقامة</a>
 
-                                                                            </div>
                                                                         </div>
-                                                                        @if($loan->status !=0 && $loan->status <6)
-
-                                                                        <div class="col-3 d-flex justify-content-end align-items-center">
+                                                                    </div>
+                                                                    @if ($loan->status != 0 && $loan->status < 6)
+                                                                        <div
+                                                                            class="col-3 d-flex justify-content-end align-items-center">
                                                                             <!--<input type="file" class="sm-input-file" id="edit-attach"/>-->
-                                                                            <label class="edit upload-btn" for="sm-ip-3">تعديل
+                                                                            <label class="edit upload-btn"
+                                                                                for="sm-ip-3">تعديل
                                                                             </label>
                                                                         </div>
-                                                                        @endif
+                                                                    @endif
 
-                                                                    </div>
+                                                                </div>
                                                             </div>
 
                                                             <div class="col-6">
-                                                                     <!--attachment #4-->
-                                                                    <div class="row mb-3">
-                                                                        <div class="col-9">
-                                                                            <div class="file-input-container row d-flex align-items-center">
+                                                                <!--attachment #4-->
+                                                                <div class="row mb-3">
+                                                                    <div class="col-9">
+                                                                        <div
+                                                                            class="file-input-container row d-flex align-items-center">
 
-                                                                                <svg class="col-2"
-                                                                                        id="Group_16559"
-                                                                                        data-name="Group 16559"
-                                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                                        width="25" height="30"
-                                                                                        viewBox="0 0 38.316 45.979">
-                                                                                        <path id="Path_12459"
-                                                                                            data-name="Path 12459"
-                                                                                            d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
-                                                                                            transform="translate(-67.168 -844.168)"
-                                                                                            fill="#27e3ea" />
-                                                                                        <path id="Path_12460"
-                                                                                            data-name="Path 12460"
-                                                                                            d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
-                                                                                            transform="translate(-70 -847)"
-                                                                                            fill="#1fbdc3" />
-                                                                                </svg>
-
-                                                                                <input type="file" value="{{ $loan->rent_file }}"
-                                                                                    name="rent_file" class="sm-input-file"
-                                                                                    id="sm-ip-4" />
-                                                                                <a href="/file/{{ $loan->rent_file }}"
-                                                                                    target="_blank" class="col-10 span-text">عقد
-                                                                                    إيجار/تمليك مقر المشروع</a>
-
-                                                                            </div>
-                                                                        </div>
-                                                                        @if($loan->status !=0 && $loan->status <6)
-
-                                                                        <div class="col-3 d-flex justify-content-end align-items-center">
-                                                                            <!--<input type="file" class="sm-input-file" id="edit-attach"/>-->
-                                                                            <label class="edit upload-btn" for="sm-ip-4">تعديل
-                                                                            </label>
-                                                                        </div>
-                                                                        @endif
-
-                                                                    </div>
-
-                                                                    <!--attachment #5-->
-                                                                    <div class="row mb-3">
-                                                                        <div class="col-9">
-                                                                            <div class="file-input-container row d-flex align-items-center">
-
-                                                                                <svg class="col-2"
-                                                                                    id="Group_16559"
-                                                                                    data-name="Group 16559"
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="25" height="30"
-                                                                                    viewBox="0 0 38.316 45.979">
-                                                                                    <path id="Path_12459"
-                                                                                        data-name="Path 12459"
-                                                                                        d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
-                                                                                        transform="translate(-67.168 -844.168)"
-                                                                                        fill="#27e3ea" />
-                                                                                    <path id="Path_12460"
-                                                                                        data-name="Path 12460"
-                                                                                        d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
+                                                                            <svg class="col-2" id="Group_16559"
+                                                                                data-name="Group 16559"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="25" height="30"
+                                                                                viewBox="0 0 38.316 45.979">
+                                                                                <path id="Path_12459"
+                                                                                    data-name="Path 12459"
+                                                                                    d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
+                                                                                    transform="translate(-67.168 -844.168)"
+                                                                                    fill="#27e3ea" />
+                                                                                <path id="Path_12460"
+                                                                                    data-name="Path 12460"
+                                                                                    d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
                                                                                     transform="translate(-70 -847)"
                                                                                     fill="#1fbdc3" />
-                                                                              </svg>
+                                                                            </svg>
 
-                                                                                <input type="file"
-                                                                                    value="/file/{{ $loan->price_file }}"
-                                                                                    name="price_file" class="sm-input-file"
-                                                                                    id="sm-ip-5" />
-                                                                                <a href="/file/{{ $loan->price_file }}"
-                                                                                    target="_blank" class="col-10 span-text">عرض/عروض
-                                                                                    أسعار
-                                                                                    مستلزمات المشروع</a>
+                                                                            <input type="file"
+                                                                                value="{{ $loan->rent_file }}"
+                                                                                name="rent_file" class="sm-input-file"
+                                                                                id="sm-ip-4" />
+                                                                            <a href="/file/{{ $loan->rent_file }}"
+                                                                                target="_blank"
+                                                                                class="col-10 span-text">عقد
+                                                                                إيجار/تمليك مقر المشروع</a>
 
-                                                                            </div>
                                                                         </div>
-                                                                        @if($loan->status !=0 && $loan->status <6)
-
-                                                                        <div class="col-3 d-flex justify-content-end align-items-center">
-                                                                            <!--<input type="file" class="sm-input-file" id="edit-attach"/>-->
-                                                                            <label class="edit upload-btn" for="sm-ip-5">تعديل </label>
-                                                                        </div>
-                                                                        @endif
-
                                                                     </div>
-
-                                                                    <!--attachment #6-->
-                                                                    <div class="row mb-3">
-                                                                        <div class="col-9">
-                                                                            <div class="file-input-container row d-flex align-items-center">
-
-                                                                                <svg class="col-2"
-                                                                                    id="Group_16559"
-                                                                                    data-name="Group 16559"
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="25" height="30"
-                                                                                    viewBox="0 0 38.316 45.979">
-                                                                                    <path id="Path_12459"
-                                                                                        data-name="Path 12459"
-                                                                                        d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
-                                                                                        transform="translate(-67.168 -844.168)"
-                                                                                        fill="#27e3ea" />
-                                                                                    <path id="Path_12460"
-                                                                                        data-name="Path 12460"
-                                                                                        d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
-                                                                                    transform="translate(-70 -847)"
-                                                                                    fill="#1fbdc3" />
-                                                                               </svg>
-
-                                                                                <input type="file"
-                                                                                    value="{{ $loan->partner_file }}"
-                                                                                    name="partner_file" class="sm-input-file"
-                                                                                    id="sm-ip-6" />
-                                                                                <a href="/file/{{ $loan->partner_file }}"
-                                                                                    target="_blank" class="col-10 span-text">
-                                                                                    مستند ضمان القرض (خطاب المؤسسه)
-                                                                                </a>
-
-                                                                            </div>
-                                                                        </div>
-                                                                        @if($loan->status !=0 && $loan->status <6)
-
+                                                                    @if ($loan->status != 0 && $loan->status < 6)
                                                                         <div
                                                                             class="col-3 d-flex justify-content-end align-items-center">
                                                                             <!--<input type="file" class="sm-input-file" id="edit-attach"/>-->
-                                                                            <label class="edit upload-btn" for="sm-ip-6">تعديل
+                                                                            <label class="edit upload-btn"
+                                                                                for="sm-ip-4">تعديل
                                                                             </label>
                                                                         </div>
-                                                                        @endif
+                                                                    @endif
 
+                                                                </div>
+
+                                                                <!--attachment #5-->
+                                                                <div class="row mb-3">
+                                                                    <div class="col-9">
+                                                                        <div
+                                                                            class="file-input-container row d-flex align-items-center">
+
+                                                                            <svg class="col-2" id="Group_16559"
+                                                                                data-name="Group 16559"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="25" height="30"
+                                                                                viewBox="0 0 38.316 45.979">
+                                                                                <path id="Path_12459"
+                                                                                    data-name="Path 12459"
+                                                                                    d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
+                                                                                    transform="translate(-67.168 -844.168)"
+                                                                                    fill="#27e3ea" />
+                                                                                <path id="Path_12460"
+                                                                                    data-name="Path 12460"
+                                                                                    d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
+                                                                                    transform="translate(-70 -847)"
+                                                                                    fill="#1fbdc3" />
+                                                                            </svg>
+
+                                                                            <input type="file"
+                                                                                value="/file/{{ $loan->price_file }}"
+                                                                                name="price_file"
+                                                                                class="sm-input-file"
+                                                                                id="sm-ip-5" />
+                                                                            <a href="/file/{{ $loan->price_file }}"
+                                                                                target="_blank"
+                                                                                class="col-10 span-text">عرض/عروض
+                                                                                أسعار
+                                                                                مستلزمات المشروع</a>
+
+                                                                        </div>
                                                                     </div>
+                                                                    @if ($loan->status != 0 && $loan->status < 6)
+                                                                        <div
+                                                                            class="col-3 d-flex justify-content-end align-items-center">
+                                                                            <!--<input type="file" class="sm-input-file" id="edit-attach"/>-->
+                                                                            <label class="edit upload-btn"
+                                                                                for="sm-ip-5">تعديل </label>
+                                                                        </div>
+                                                                    @endif
+
+                                                                </div>
+
+                                                                <!--attachment #6-->
+                                                                <div class="row mb-3">
+                                                                    <div class="col-9">
+                                                                        <div
+                                                                            class="file-input-container row d-flex align-items-center">
+
+                                                                            <svg class="col-2" id="Group_16559"
+                                                                                data-name="Group 16559"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="25" height="30"
+                                                                                viewBox="0 0 38.316 45.979">
+                                                                                <path id="Path_12459"
+                                                                                    data-name="Path 12459"
+                                                                                    d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
+                                                                                    transform="translate(-67.168 -844.168)"
+                                                                                    fill="#27e3ea" />
+                                                                                <path id="Path_12460"
+                                                                                    data-name="Path 12460"
+                                                                                    d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
+                                                                                    transform="translate(-70 -847)"
+                                                                                    fill="#1fbdc3" />
+                                                                            </svg>
+
+                                                                            <input type="file"
+                                                                                value="{{ $loan->partner_file }}"
+                                                                                name="partner_file"
+                                                                                class="sm-input-file"
+                                                                                id="sm-ip-6" />
+                                                                            <a href="/file/{{ $loan->partner_file }}"
+                                                                                target="_blank"
+                                                                                class="col-10 span-text">
+                                                                                مستند ضمان القرض (خطاب المؤسسه)
+                                                                            </a>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    @if ($loan->status != 0 && $loan->status < 6)
+                                                                        <div
+                                                                            class="col-3 d-flex justify-content-end align-items-center">
+                                                                            <!--<input type="file" class="sm-input-file" id="edit-attach"/>-->
+                                                                            <label class="edit upload-btn"
+                                                                                for="sm-ip-6">تعديل
+                                                                            </label>
+                                                                        </div>
+                                                                    @endif
+
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -1359,89 +1405,105 @@
 
                                                     <!--Add attachment-->
                                                     <!--<label for="sm-ip-7">-->
-                                                        @if($loan->status !=0 && $loan->status <6)
+                                                    @if ($loan->status != 0 && $loan->status < 6)
+                                                        <div class="row mb-3 mt-5 d-flex justify-content-center">
+                                                            <div class="d-flex align-items-center add-row col-3">
+                                                                <button class="save_attach_btn" type="button">إضافة
 
-                                                    <div class="row mb-3 mt-5 d-flex justify-content-center">
-                                                        <div class="d-flex align-items-center add-row col-3">
-                                                            <button class="save_attach_btn" type="button">إضافة
-
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="14.571" height="17" viewBox="0 0 14.571 17">
-                                                                    <g id="Group_16549" data-name="Group 16549" transform="translate(3 -1)">
-                                                                        <text class="plus_fill_white" id="_" data-name="+" transform="translate(0.286 13)" fill="#fff" font-size="12" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="7" y="-1">+</tspan></text>
-                                                                        <g id="Path_10962" data-name="Path 10962" transform="translate(-3 2)" fill="none">
-                                                                        <path d="M7.286,0a7.4,7.4,0,0,1,7.286,7.5A7.4,7.4,0,0,1,7.286,15,7.4,7.4,0,0,1,0,7.5,7.4,7.4,0,0,1,7.286,0Z" stroke="none"/>
-                                                                        <path class="plus_fill_white" d="M 7.285714149475098 1 C 3.819764137268066 1 1.000003814697266 3.915889739990234 1.000003814697266 7.5 C 1.000003814697266 11.08411026000977 3.819764137268066 14 7.285714149475098 14 C 10.75166416168213 14 13.57142448425293 11.08411026000977 13.57142448425293 7.5 C 13.57142448425293 3.915889739990234 10.75166416168213 1 7.285714149475098 1 M 7.285714149475098 0 C 11.30950355529785 0 14.57142448425293 3.35785961151123 14.57142448425293 7.5 C 14.57142448425293 11.64213943481445 11.30950355529785 15 7.285714149475098 15 C 3.261923789978027 15 3.814697265625e-06 11.64213943481445 3.814697265625e-06 7.5 C 3.814697265625e-06 3.35785961151123 3.261923789978027 0 7.285714149475098 0 Z" stroke="none" fill="#fff"/>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="14.571" height="17"
+                                                                        viewBox="0 0 14.571 17">
+                                                                        <g id="Group_16549" data-name="Group 16549"
+                                                                            transform="translate(3 -1)">
+                                                                            <text class="plus_fill_white"
+                                                                                id="_" data-name="+"
+                                                                                transform="translate(0.286 13)"
+                                                                                fill="#fff" font-size="12"
+                                                                                font-family="SegoeUI-Bold, Segoe UI"
+                                                                                font-weight="700">
+                                                                                <tspan x="7" y="-1">+
+                                                                                </tspan>
+                                                                            </text>
+                                                                            <g id="Path_10962" data-name="Path 10962"
+                                                                                transform="translate(-3 2)"
+                                                                                fill="none">
+                                                                                <path
+                                                                                    d="M7.286,0a7.4,7.4,0,0,1,7.286,7.5A7.4,7.4,0,0,1,7.286,15,7.4,7.4,0,0,1,0,7.5,7.4,7.4,0,0,1,7.286,0Z"
+                                                                                    stroke="none" />
+                                                                                <path class="plus_fill_white"
+                                                                                    d="M 7.285714149475098 1 C 3.819764137268066 1 1.000003814697266 3.915889739990234 1.000003814697266 7.5 C 1.000003814697266 11.08411026000977 3.819764137268066 14 7.285714149475098 14 C 10.75166416168213 14 13.57142448425293 11.08411026000977 13.57142448425293 7.5 C 13.57142448425293 3.915889739990234 10.75166416168213 1 7.285714149475098 1 M 7.285714149475098 0 C 11.30950355529785 0 14.57142448425293 3.35785961151123 14.57142448425293 7.5 C 14.57142448425293 11.64213943481445 11.30950355529785 15 7.285714149475098 15 C 3.261923789978027 15 3.814697265625e-06 11.64213943481445 3.814697265625e-06 7.5 C 3.814697265625e-06 3.35785961151123 3.261923789978027 0 7.285714149475098 0 Z"
+                                                                                    stroke="none" fill="#fff" />
+                                                                            </g>
                                                                         </g>
-                                                                    </g>
-                                                                </svg>
+                                                                    </svg>
 
 
-                                                             </button>
+                                                                </button>
+                                                            </div>
                                                         </div>
-                                                    </div>
                                                     @endif
                                                     <!--</label>-->
 
 
                                                     <!-- additional -->
                                                     @foreach ($loan->additionalFiles as $key => $file)
-                                                    <div class="row mb-3 mt-4 prent_attach_row">
-                                                        <div class="col-6">
-                                                            <div class="row">
-                                                                <div class="col-9">
-                                                                    <div class="file-input-container row">
+                                                        <div class="row mb-3 mt-4 prent_attach_row">
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-9">
+                                                                        <div class="file-input-container row">
 
-                                                                        <svg class="col-2"
-                                                                                    id="Group_16559"
-                                                                                    data-name="Group 16559"
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="25" height="30"
-                                                                                    viewBox="0 0 38.316 45.979">
-                                                                                    <path id="Path_12459"
-                                                                                        data-name="Path 12459"
-                                                                                        d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
-                                                                                        transform="translate(-67.168 -844.168)"
-                                                                                        fill="#27e3ea" />
-                                                                                    <path id="Path_12460"
-                                                                                        data-name="Path 12460"
-                                                                                        d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
-                                                                                        transform="translate(-70 -847)"
-                                                                                        fill="#1fbdc3" />
-                                                                        </svg>
+                                                                            <svg class="col-2" id="Group_16559"
+                                                                                data-name="Group 16559"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="25" height="30"
+                                                                                viewBox="0 0 38.316 45.979">
+                                                                                <path id="Path_12459"
+                                                                                    data-name="Path 12459"
+                                                                                    d="M101.653,857.25,92.4,848H71v38.316h30.653Z"
+                                                                                    transform="translate(-67.168 -844.168)"
+                                                                                    fill="#27e3ea" />
+                                                                                <path id="Path_12460"
+                                                                                    data-name="Path 12460"
+                                                                                    d="M96.821,847H73.832A3.833,3.833,0,0,0,70,850.832v38.316a3.833,3.833,0,0,0,3.832,3.831h30.653a3.833,3.833,0,0,0,3.832-3.831V858.5Zm7.663,42.148H73.832V850.832H92.99V858.5a3.833,3.833,0,0,0,3.832,3.831h7.663Z"
+                                                                                    transform="translate(-70 -847)"
+                                                                                    fill="#1fbdc3" />
+                                                                            </svg>
 
-                                                                        <input type="file"
-                                                                            value="{{ $file->file_name }}"
-                                                                            name="additionalFiles[]"
-                                                                            class="sm-input-file" id="sm-ip-6" />
-                                                                        <a href="/file/{{ $file->file_name }}"
-                                                                            target="_blank" class="col-10 span-text">
-                                                                            مستند إضافى {{ $key + 1 }}
-                                                                        </a>
+                                                                            <input type="file"
+                                                                                value="{{ $file->file_name }}"
+                                                                                name="additionalFiles[]"
+                                                                                class="sm-input-file"
+                                                                                id="sm-ip-6" />
+                                                                            <a href="/file/{{ $file->file_name }}"
+                                                                                target="_blank"
+                                                                                class="col-10 span-text">
+                                                                                مستند إضافى {{ $key + 1 }}
+                                                                            </a>
 
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                @if($loan->status !=0 && $loan->status <6)
-
-                                                                <!--<div
+                                                                    @if ($loan->status != 0 && $loan->status < 6)
+                                                                        <!--<div
                                                                     class="col-3 d-flex justify-content-end align-items-center">
                                                                     <!//<input type="file" class="sm-input-file" id="edit-attach"/>//>
                                                                     <label class="edit" for="sm-ip-6">تعديل
                                                                     </label>
                                                                 </div>-->
 
-                                                                <div
-                                                                    class="col-3 d-flex justify-content-center align-items-center">
-                                                                    <a href="/additional-files/delete/{{ $file->id }}"
-                                                                        type="button" class="delete delete-link w-100" >حذف
-                                                                    </a>
+                                                                        <div
+                                                                            class="col-3 d-flex justify-content-center align-items-center">
+                                                                            <a href="/additional-files/delete/{{ $file->id }}"
+                                                                                type="button"
+                                                                                class="delete delete-link w-100">حذف
+                                                                            </a>
+                                                                        </div>
+                                                                    @endif
                                                                 </div>
-                                                                @endif
                                                             </div>
+
                                                         </div>
-
-                                                    </div>
-
-                                                @endforeach
+                                                    @endforeach
 
 
                                                     <!-- end Additional -->
@@ -1449,8 +1511,8 @@
                                                     <div class="row empty-container mt-5">
                                                         <svg fill="#b68b25" version="1.1" id="Capa_1"
                                                             xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            width="103.696px" height="103.696px"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                            y="0px" width="103.696px" height="103.696px"
                                                             viewBox="0 0 103.696 103.696"
                                                             style="enable-background:new 0 0 103.696 103.696;"
                                                             xml:space="preserve">
@@ -1477,43 +1539,49 @@
                                         <!-- بحث أجتماعى-->
                                         <div class="tab-pane fade" id="social-research" role="tabpanel"
                                             aria-labelledby="social-research-tab">
-                                            @if($loan->socialReacerch)
-                                            <div class="row tab-data">
-                                                <div class="col-5">
-                                                    @php
-                                                        $husband = $loan->relative()->where('type' , 0)->first();
-                                                        $sons = $loan->relative()->where('type' , 1)->get();
-                                                    @endphp
-                                                    @if($husband)
-                                                    <h3 class="title mb-3"> بيانات عن الأسرة </h3>
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> اسم الزوج </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> {{$husband->name}}</p>
-                                                        </div>
-                                                    </div>
+                                            @if ($loan->socialReacerch)
+                                                <div class="row tab-data">
+                                                    <div class="col-5">
+                                                        @php
+                                                            $husband = $loan
+                                                                ->relative()
+                                                                ->where('type', 0)
+                                                                ->first();
+                                                            $sons = $loan
+                                                                ->relative()
+                                                                ->where('type', 1)
+                                                                ->get();
+                                                        @endphp
+                                                        @if ($husband)
+                                                            <h3 class="title mb-3"> بيانات عن الأسرة </h3>
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> اسم الزوج </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $husband->name }}</p>
+                                                                </div>
+                                                            </div>
 
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> الرقم القومى </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> {{$husband->national_id}}</p>
-                                                        </div>
-                                                    </div>
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> الرقم القومى </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $husband->national_id }}</p>
+                                                                </div>
+                                                            </div>
 
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> تاريخ الميلاد </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> {{$husband->dateOfBirth}}</p>
-                                                        </div>
-                                                    </div>
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> تاريخ الميلاد </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $husband->dateOfBirth }}</p>
+                                                                </div>
+                                                            </div>
 
-                                                    {{-- <div class="row">
+                                                            {{-- <div class="row">
                                                         <div class="col-6 labels">
                                                             <p> تليفون محمول </p>
                                                         </div>
@@ -1522,110 +1590,110 @@
                                                         </div>
                                                     </div> --}}
 
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> الوظيفة </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p>{{$husband->job}}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> الدخل </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> {{$husband->income}}</p>
-                                                        </div>
-                                                    </div>
-                                                    @endif
-                                                    <div class="row">
-                                                        <div class="col-3 hr">
-                                                            <hr>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> عدد الابناء </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> {{count($sons)}} </p>
-                                                        </div>
-                                                    </div>
-                                                    @foreach ($sons as $son)
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> الوظيفة </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p>{{ $husband->job }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> الدخل </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $husband->income }}</p>
+                                                                </div>
+                                                            </div>
+                                                        @endif
                                                         <div class="row">
-                                                            <div class="col-8 social-research-card">
-                                                                <div class="row">
-                                                                    <div class="col-6 labels">
-                                                                        <p> اسم الابن </p>
-                                                                    </div>
-                                                                    <div class="col-6 data text-break">
-                                                                        <p> {{$son->name}}   </p>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row">
-                                                                    <div class="col-6 labels">
-                                                                        <p> تاريخ الميلاد </p>
-                                                                    </div>
-                                                                    <div class="col-6 data text-break">
-                                                                        <p> {{$son->dateOfBirth}} </p>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row">
-                                                                    <div class="col-6 labels">
-                                                                        <p> الحالة الاجتماعية </p>
-                                                                    </div>
-                                                                    <div class="col-6 data text-break">
-                                                                        <p> {{$son->social_status}}</p>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row">
-                                                                    <div class="col-6 labels">
-                                                                        <p> المرحلة التعليمية </p>
-                                                                    </div>
-                                                                    <div class="col-6 data text-break">
-                                                                        <p> {{$son->eduction_status}} </p>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row">
-                                                                    <div class="col-6 labels">
-                                                                        <p> الوظيفة </p>
-                                                                    </div>
-                                                                    <div class="col-6 data text-break">
-                                                                        <p> {{$son->job}} </p>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row">
-                                                                    <div class="col-6 labels">
-                                                                        <p> الدخل </p>
-                                                                    </div>
-                                                                    <div class="col-6 data text-break">
-                                                                        <p> {{$son->income}} </p>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row">
-                                                                    <div class="col-6 labels">
-                                                                        <p> مقيم بالمنزل </p>
-                                                                    </div>
-                                                                    <div class="col-6 data text-break">
-                                                                        <p> {{$son->in_home ? "نعم" : "لا"}} </p>
-                                                                    </div>
-                                                                </div>
+                                                            <div class="col-3 hr">
+                                                                <hr>
                                                             </div>
                                                         </div>
 
-                                                    @endforeach
+                                                        <div class="row">
+                                                            <div class="col-6 labels">
+                                                                <p> عدد الابناء </p>
+                                                            </div>
+                                                            <div class="col-6 data text-break">
+                                                                <p> {{ count($sons) }} </p>
+                                                            </div>
+                                                        </div>
+                                                        @foreach ($sons as $son)
+                                                            <div class="row">
+                                                                <div class="col-8 social-research-card">
+                                                                    <div class="row">
+                                                                        <div class="col-6 labels">
+                                                                            <p> اسم الابن </p>
+                                                                        </div>
+                                                                        <div class="col-6 data text-break">
+                                                                            <p> {{ $son->name }} </p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-6 labels">
+                                                                            <p> تاريخ الميلاد </p>
+                                                                        </div>
+                                                                        <div class="col-6 data text-break">
+                                                                            <p> {{ $son->dateOfBirth }} </p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-6 labels">
+                                                                            <p> الحالة الاجتماعية </p>
+                                                                        </div>
+                                                                        <div class="col-6 data text-break">
+                                                                            <p> {{ $son->social_status }}</p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-6 labels">
+                                                                            <p> المرحلة التعليمية </p>
+                                                                        </div>
+                                                                        <div class="col-6 data text-break">
+                                                                            <p> {{ $son->eduction_status }} </p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-6 labels">
+                                                                            <p> الوظيفة </p>
+                                                                        </div>
+                                                                        <div class="col-6 data text-break">
+                                                                            <p> {{ $son->job }} </p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-6 labels">
+                                                                            <p> الدخل </p>
+                                                                        </div>
+                                                                        <div class="col-6 data text-break">
+                                                                            <p> {{ $son->income }} </p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-6 labels">
+                                                                            <p> مقيم بالمنزل </p>
+                                                                        </div>
+                                                                        <div class="col-6 data text-break">
+                                                                            <p> {{ $son->in_home ? 'نعم' : 'لا' }}
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
 
 
 
-                                                    {{-- <div class="row mt-2">
+                                                        {{-- <div class="row mt-2">
                                                         <div class="col-6 labels">
                                                             <p> مصادر اخرى للدخل </p>
                                                         </div>
@@ -1635,164 +1703,166 @@
                                                     </div> --}}
 
 
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> اجمالي الدخل </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> ٢٠٠٠ </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-1 divider">
-                                                    <hr>
-                                                </div>
-
-                                                <div class="col-6">
-                                                    <h3 class="title mb-3"> بيانات عن حالة المنزل </h3>
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> ملكيه المنزل </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> {{$loan->socialReacerch->is_owner ? "ملك" : "إيجار"}} </p>
-                                                        </div>
-                                                    </div>
-                                                    @if(!$loan->socialReacerch->is_owner)
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> قيمة الايجار </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> {{$loan->socialReacerch->rent}}</p>
-                                                        </div>
-                                                    </div>
-                                                    @endif
-
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> عدد الغرف </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> {{$loan->socialReacerch->number_of_rooms}}</p>
+                                                        <div class="row">
+                                                            <div class="col-6 labels">
+                                                                <p> اجمالي الدخل </p>
+                                                            </div>
+                                                            <div class="col-6 data text-break">
+                                                                <p> ٢٠٠٠ </p>
+                                                            </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> حمام مشترك </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> {{$loan->socialReacerch->is_shared_bathroom ? "نعم" : "لا"}}  </p>
-                                                        </div>
+                                                    <div class="col-1 divider">
+                                                        <hr>
                                                     </div>
 
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> حالة المنزل </p>
+                                                    <div class="col-6">
+                                                        <h3 class="title mb-3"> بيانات عن حالة المنزل </h3>
+                                                        <div class="row">
+                                                            <div class="col-6 labels">
+                                                                <p> ملكيه المنزل </p>
+                                                            </div>
+                                                            <div class="col-6 data text-break">
+                                                                <p> {{ $loan->socialReacerch->is_owner ? 'ملك' : 'إيجار' }}
+                                                                </p>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-6 data text-break">
-                                                            @switch($loan->socialReacerch->houes_status)
-                                                                @case(1)
-                                                                <p> جيدة </p>
-                                                                    @break
-                                                                @case(2)
-                                                                <p> متوسطة </p>
-                                                                    @break
+                                                        @if (!$loan->socialReacerch->is_owner)
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> قيمة الايجار </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $loan->socialReacerch->rent }}</p>
+                                                                </div>
+                                                            </div>
+                                                        @endif
 
-                                                                @default
-                                                                    <p> سيئة </p>
-
-                                                            @endswitch
+                                                        <div class="row">
+                                                            <div class="col-6 labels">
+                                                                <p> عدد الغرف </p>
+                                                            </div>
+                                                            <div class="col-6 data text-break">
+                                                                <p> {{ $loan->socialReacerch->number_of_rooms }}</p>
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> أحتياجات المنزل </p>
+                                                        <div class="row">
+                                                            <div class="col-6 labels">
+                                                                <p> حمام مشترك </p>
+                                                            </div>
+                                                            <div class="col-6 data text-break">
+                                                                <p> {{ $loan->socialReacerch->is_shared_bathroom ? 'نعم' : 'لا' }}
+                                                                </p>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p>{{$loan->socialReacerch->house_needs}} </p>
-                                                        </div>
-                                                    </div>
 
-
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> حالة الأثاث </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            @switch($loan->socialReacerch->furniture_status)
-                                                                @case(1)
-                                                                <p> جيدة </p>
-                                                                    @break
-                                                                @case(2)
-                                                                <p> متوسطة </p>
+                                                        <div class="row">
+                                                            <div class="col-6 labels">
+                                                                <p> حالة المنزل </p>
+                                                            </div>
+                                                            <div class="col-6 data text-break">
+                                                                @switch($loan->socialReacerch->houes_status)
+                                                                    @case(1)
+                                                                        <p> جيدة </p>
                                                                     @break
 
-                                                                @default
-                                                                    <p> سيئه </p>
+                                                                    @case(2)
+                                                                        <p> متوسطة </p>
+                                                                    @break
 
-                                                            @endswitch
+                                                                    @default
+                                                                        <p> سيئة </p>
+                                                                @endswitch
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> تفصيلها </p>
+                                                        <div class="row">
+                                                            <div class="col-6 labels">
+                                                                <p> أحتياجات المنزل </p>
+                                                            </div>
+                                                            <div class="col-6 data text-break">
+                                                                <p>{{ $loan->socialReacerch->house_needs }} </p>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p>{{$loan->socialReacerch->furniture_description}}  </p>
-                                                        </div>
-                                                    </div>
 
 
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> ملاحظات على حالة الأسرة </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> {{$loan->socialReacerch->notes ?? "لا يوجد"}} </p>
-                                                        </div>
-                                                    </div>
-                                                    @if (count($loan->illnesses))
-                                                    <h3 class="title mb-3 mt-5"> الملف الطبي </h3>
+                                                        <div class="row">
+                                                            <div class="col-6 labels">
+                                                                <p> حالة الأثاث </p>
+                                                            </div>
+                                                            <div class="col-6 data text-break">
+                                                                @switch($loan->socialReacerch->furniture_status)
+                                                                    @case(1)
+                                                                        <p> جيدة </p>
+                                                                    @break
 
-                                                    @endif
+                                                                    @case(2)
+                                                                        <p> متوسطة </p>
+                                                                    @break
 
-                                                    @foreach ($loan->illnesses as $illness)
-                                                    <!--       اسم المريض    -->
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> اسم المريض </p>
+                                                                    @default
+                                                                        <p> سيئه </p>
+                                                                @endswitch
+                                                            </div>
                                                         </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> {{$illness->name}} </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> نوع المرض </p>
-                                                        </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> {{$illness->type}}</p>
-                                                        </div>
-                                                    </div>
 
-                                                    <!--          اسماء الادويه    -->
-                                                    <div class="row">
-                                                        <div class="col-6 labels">
-                                                            <p> اسماء الادويه </p>
+                                                        <div class="row">
+                                                            <div class="col-6 labels">
+                                                                <p> تفصيلها </p>
+                                                            </div>
+                                                            <div class="col-6 data text-break">
+                                                                <p>{{ $loan->socialReacerch->furniture_description }}
+                                                                </p>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-6 data text-break">
-                                                            <p> {{$illness->drugs}} </p>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
 
-                                                            {{--
-                                                    <h3 class="title mb-3 mt-5"> خبرات الاسره في مجال المشروع </h3>
+
+                                                        <div class="row">
+                                                            <div class="col-6 labels">
+                                                                <p> ملاحظات على حالة الأسرة </p>
+                                                            </div>
+                                                            <div class="col-6 data text-break">
+                                                                <p> {{ $loan->socialReacerch->notes ?? 'لا يوجد' }}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        @if (count($loan->illnesses))
+                                                            <h3 class="title mb-3 mt-5"> الملف الطبي </h3>
+                                                        @endif
+
+                                                        @foreach ($loan->illnesses as $illness)
+                                                            <!--       اسم المريض    -->
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> اسم المريض </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $illness->name }} </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> نوع المرض </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $illness->type }}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--          اسماء الادويه    -->
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> اسماء الادويه </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $illness->drugs }} </p>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+
+                                                        {{-- <h3 class="title mb-3 mt-5"> خبرات الاسره في مجال المشروع </h3>
 
 
                                                     <div class="row">
@@ -1802,21 +1872,21 @@
                                                         </div>
 
                                                     </div> --}}
+                                                    </div>
                                                 </div>
-                                            </div>
                                             @else
-
-                                            <!-- Empty image when delete all attachments -->
-                                            <div class="row empty-container mt-5 ">
-                                                <svg fill="#b68b25" version="1.1" id="Capa_1"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    width="103.696px" height="103.696px" viewBox="0 0 103.696 103.696"
-                                                    style="enable-background:new 0 0 103.696 103.696;"
-                                                    xml:space="preserve">
-                                                    <g>
-                                                        <path
-                                                            d="M74.836,70.501c0.658,1.521-0.042,3.287-1.562,3.944c-1.521,0.66-3.286-0.042-3.944-1.562
+                                                <!-- Empty image when delete all attachments -->
+                                                <div class="row empty-container mt-5 ">
+                                                    <svg fill="#b68b25" version="1.1" id="Capa_1"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                        y="0px" width="103.696px" height="103.696px"
+                                                        viewBox="0 0 103.696 103.696"
+                                                        style="enable-background:new 0 0 103.696 103.696;"
+                                                        xml:space="preserve">
+                                                        <g>
+                                                            <path
+                                                                d="M74.836,70.501c0.658,1.521-0.042,3.287-1.562,3.944c-1.521,0.66-3.286-0.042-3.944-1.562
                                                 c-2.894-6.689-9.731-11.012-17.421-11.012c-7.868,0-14.747,4.318-17.523,11.004c-0.479,1.154-1.596,1.85-2.771,1.85
                                                 c-0.384,0-0.773-0.074-1.15-0.229c-1.53-0.636-2.255-2.392-1.62-3.921c3.71-8.932,12.764-14.703,23.064-14.703
                                                 C61.994,55.872,70.994,61.614,74.836,70.501z M31.06,35.17c0-3.423,2.777-6.201,6.201-6.201c3.423,0,6.2,2.777,6.2,6.201
@@ -1825,10 +1895,10 @@
                                                 H18.23C8.179,103.696,0,95.518,0,85.467V18.23C0,8.178,8.179,0,18.23,0h67.235c10.053,0,18.23,8.178,18.23,18.23v67.235
                                                 C103.697,95.518,95.518,103.696,85.467,103.696z M18.23,8.579c-5.321,0-9.651,4.33-9.651,9.651v67.235
                                                 c0,5.321,4.33,9.651,9.651,9.651h67.235c5.321,0,9.651-4.33,9.651-9.651V18.23c0-5.321-4.33-9.651-9.651-9.651H18.23z" />
-                                                    </g>
-                                                </svg>
-                                                <h3 class="empty-text text-center mt-3"> لا يوجد بيانات</h3>
-                                            </div>
+                                                        </g>
+                                                    </svg>
+                                                    <h3 class="empty-text text-center mt-3"> لا يوجد بيانات</h3>
+                                                </div>
                                             @endif
                                             <!--End Empty image when delete all attachments -->
                                         </div>
@@ -1848,15 +1918,15 @@
                                                             <div class="col-6 data text-break">
                                                                 @switch($loan->socialReacerch->furniture_status)
                                                                     @case(1)
-                                                                    <p> جيدة </p>
-                                                                        @break
+                                                                        <p> جيدة </p>
+                                                                    @break
+
                                                                     @case(2)
-                                                                    <p> متوسطة </p>
-                                                                        @break
+                                                                        <p> متوسطة </p>
+                                                                    @break
 
                                                                     @default
                                                                         <p> سيئه </p>
-
                                                                 @endswitch
 
                                                             </div>
@@ -1896,19 +1966,19 @@
                                                                 <p> ملكية السكن </p>
                                                             </div>
                                                             <div class="col-6 data text-break">
-                                                                <p> {{$loan->fieldInquiry->is_owner ? "ملك" : "إيجار"}}  </p>
+                                                                <p> {{ $loan->fieldInquiry->is_owner ? 'ملك' : 'إيجار' }}
+                                                                </p>
                                                             </div>
                                                         </div>
-                                                        @if(!$loan->fieldInquiry->is_owner)
-
-                                                        <div class="row">
-                                                            <div class="col-6 labels">
-                                                                <p> قيمة الإيجار الشهري </p>
+                                                        @if (!$loan->fieldInquiry->is_owner)
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> قيمة الإيجار الشهري </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $loan->fieldInquiry->rent }} </p>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-6 data text-break">
-                                                                <p> {{$loan->fieldInquiry->rent}} </p>
-                                                            </div>
-                                                        </div>
                                                         @endif
 
                                                     </div>
@@ -1972,13 +2042,12 @@
                                                     </div>
                                                 </div>
                                             @else
-
                                                 <!-- Empty image when delete all attachments -->
                                                 <div class="row empty-container mt-5 ">
                                                     <svg fill="#b68b25" version="1.1" id="Capa_1"
                                                         xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        width="103.696px" height="103.696px"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                        y="0px" width="103.696px" height="103.696px"
                                                         viewBox="0 0 103.696 103.696"
                                                         style="enable-background:new 0 0 103.696 103.696;"
                                                         xml:space="preserve">
@@ -2174,8 +2243,8 @@
                                                 <div class="row empty-container mt-5 ">
                                                     <svg fill="#b68b25" version="1.1" id="Capa_1"
                                                         xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        width="103.696px" height="103.696px"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                        y="0px" width="103.696px" height="103.696px"
                                                         viewBox="0 0 103.696 103.696"
                                                         style="enable-background:new 0 0 103.696 103.696;"
                                                         xml:space="preserve">
@@ -2197,6 +2266,67 @@
                                                 <!--End Empty image when delete all attachments -->
                                             @endif
                                         </div>
+
+                                        <!--SASS-->
+                                        <div class="tab-pane fade" id="SASS" role="tabpanel"
+                                            aria-labelledby="SASS-tab">
+                                            <!-- Empty image when delete all attachments -->
+                                            <div class="row empty-container mt-5 ">
+                                                <svg fill="#b68b25" version="1.1" id="Capa_1"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                    y="0px" width="103.696px" height="103.696px"
+                                                    viewBox="0 0 103.696 103.696"
+                                                    style="enable-background:new 0 0 103.696 103.696;"
+                                                    xml:space="preserve">
+                                                    <g>
+                                                        <path
+                                                            d="M74.836,70.501c0.658,1.521-0.042,3.287-1.562,3.944c-1.521,0.66-3.286-0.042-3.944-1.562
+                                                                                    c-2.894-6.689-9.731-11.012-17.421-11.012c-7.868,0-14.747,4.318-17.523,11.004c-0.479,1.154-1.596,1.85-2.771,1.85
+                                                                                    c-0.384,0-0.773-0.074-1.15-0.229c-1.53-0.636-2.255-2.392-1.62-3.921c3.71-8.932,12.764-14.703,23.064-14.703
+                                                                                    C61.994,55.872,70.994,61.614,74.836,70.501z M31.06,35.17c0-3.423,2.777-6.201,6.201-6.201c3.423,0,6.2,2.777,6.2,6.201
+                                                                                    c0,3.426-2.777,6.203-6.2,6.203C33.836,41.373,31.06,38.597,31.06,35.17z M59.176,35.17c0-3.423,2.78-6.201,6.203-6.201
+                                                                                    c3.424,0,6.201,2.777,6.201,6.201c0,3.426-2.777,6.203-6.201,6.203C61.957,41.373,59.176,38.597,59.176,35.17z M85.467,103.696
+                                                                                    H18.23C8.179,103.696,0,95.518,0,85.467V18.23C0,8.178,8.179,0,18.23,0h67.235c10.053,0,18.23,8.178,18.23,18.23v67.235
+                                                                                    C103.697,95.518,95.518,103.696,85.467,103.696z M18.23,8.579c-5.321,0-9.651,4.33-9.651,9.651v67.235
+                                                                                    c0,5.321,4.33,9.651,9.651,9.651h67.235c5.321,0,9.651-4.33,9.651-9.651V18.23c0-5.321-4.33-9.651-9.651-9.651H18.23z" />
+                                                    </g>
+                                                </svg>
+                                                <h3 class="empty-text text-center mt-3"> لا يوجد بيانات</h3>
+                                            </div>
+                                            @endif
+                                            <!--End Empty image when delete all attachments -->
+                                        </div>
+                                        <!--Iscore-->
+                                        <div class="tab-pane fade" id="Iscore" role="tabpanel"
+                                            aria-labelledby="Iscore-tab">
+                                            <!-- Empty image when delete all attachments -->
+                                            <div class="row empty-container mt-5 ">
+                                                <svg fill="#b68b25" version="1.1" id="Capa_1"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                    y="0px" width="103.696px" height="103.696px"
+                                                    viewBox="0 0 103.696 103.696"
+                                                    style="enable-background:new 0 0 103.696 103.696;"
+                                                    xml:space="preserve">
+                                                    <g>
+                                                        <path
+                                                            d="M74.836,70.501c0.658,1.521-0.042,3.287-1.562,3.944c-1.521,0.66-3.286-0.042-3.944-1.562
+                                                            c-2.894-6.689-9.731-11.012-17.421-11.012c-7.868,0-14.747,4.318-17.523,11.004c-0.479,1.154-1.596,1.85-2.771,1.85
+                                                            c-0.384,0-0.773-0.074-1.15-0.229c-1.53-0.636-2.255-2.392-1.62-3.921c3.71-8.932,12.764-14.703,23.064-14.703
+                                                    C61.994,55.872,70.994,61.614,74.836,70.501z M31.06,35.17c0-3.423,2.777-6.201,6.201-6.201c3.423,0,6.2,2.777,6.2,6.201
+                                                    c0,3.426-2.777,6.203-6.2,6.203C33.836,41.373,31.06,38.597,31.06,35.17z M59.176,35.17c0-3.423,2.78-6.201,6.203-6.201
+                                                    c3.424,0,6.201,2.777,6.201,6.201c0,3.426-2.777,6.203-6.201,6.203C61.957,41.373,59.176,38.597,59.176,35.17z M85.467,103.696
+                                                    H18.23C8.179,103.696,0,95.518,0,85.467V18.23C0,8.178,8.179,0,18.23,0h67.235c10.053,0,18.23,8.178,18.23,18.23v67.235
+                                                    C103.697,95.518,95.518,103.696,85.467,103.696z M18.23,8.579c-5.321,0-9.651,4.33-9.651,9.651v67.235
+                                                    c0,5.321,4.33,9.651,9.651,9.651h67.235c5.321,0,9.651-4.33,9.651-9.651V18.23c0-5.321-4.33-9.651-9.651-9.651H18.23z" />
+                                                    </g>
+                                                </svg>
+                                                <h3 class="empty-text text-center mt-3"> لا يوجد بيانات</h3>
+                                            </div>
+                                            @endif
+                                            <!--End Empty image when delete all attachments -->
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- End Third Container in details-->
@@ -2204,89 +2334,91 @@
                                 <!--###################################### Tabs in Print ##################################################################-->
 
 
-                            <p class="pageBreak" class="pageBreak" style="page-break-after: always;">&nbsp;
-                            </p>
-                            <p class="pageBreak" style="page-break-before: always;">&nbsp;</p>
-                            <p class="pageBreak" class="pageBreak" style="page-break-after: always;">&nbsp;
-                            </p>
-                            <p class="pageBreak" style="page-break-before: always;">&nbsp;</p>
-                            <p class="pageBreak" class="pageBreak" style="page-break-after: always;">&nbsp;
-                            </p>
-                            <p class="pageBreak" style="page-break-before: always;">&nbsp;</p>
+                                <p class="pageBreak" class="pageBreak" style="page-break-after: always;">&nbsp;
+                                </p>
+                                <p class="pageBreak" style="page-break-before: always;">&nbsp;</p>
+                                <p class="pageBreak" class="pageBreak" style="page-break-after: always;">&nbsp;
+                                </p>
+                                <p class="pageBreak" style="page-break-before: always;">&nbsp;</p>
+                                <p class="pageBreak" class="pageBreak" style="page-break-after: always;">&nbsp;
+                                </p>
+                                <p class="pageBreak" style="page-break-before: always;">&nbsp;</p>
 
-                            <p class="pageBreak" class="pageBreak" style="page-break-after: always;">&nbsp;
-                            </p>
-                            <p class="pageBreak" style="page-break-before: always;">&nbsp;</p>
-                            <p class="pageBreak" class="pageBreak" style="page-break-after: always;">&nbsp;
-                            </p>
-                            <p class="pageBreak" style="page-break-before: always;">&nbsp;</p>
-                            <p class="pageBreak" class="pageBreak" style="page-break-after: always;">&nbsp;
-                            </p>
-                            <p class="pageBreak" style="page-break-before: always;">&nbsp;</p>
-                            <!--تفاصيل الطلب-->
-                            <div class="col-12 col-lg-11 mt-4 third-container third-in-print break">
-                                <h1>تفاصيل الطلب</h1>
-                                <!-- تفاصيل الطلب-->
-                                <div class="row tab-data">
-                                    <div class="col-5">
-                                        <h3 class="title mb-3"> البيانات الشخصية</h3>
-                                        <!-- تاريخ الميلاد   -->
-                                        <div class="row mb-3">
-                                            <div class="col-6 labels">
-                                                <p> تاريخ الميلاد </p>
+                                <p class="pageBreak" class="pageBreak" style="page-break-after: always;">&nbsp;
+                                </p>
+                                <p class="pageBreak" style="page-break-before: always;">&nbsp;</p>
+                                <p class="pageBreak" class="pageBreak" style="page-break-after: always;">&nbsp;
+                                </p>
+                                <p class="pageBreak" style="page-break-before: always;">&nbsp;</p>
+                                <p class="pageBreak" class="pageBreak" style="page-break-after: always;">&nbsp;
+                                </p>
+                                <p class="pageBreak" style="page-break-before: always;">&nbsp;</p>
+                                <!--تفاصيل الطلب-->
+                                <div class="col-12 col-lg-11 mt-4 third-container third-in-print break">
+                                    <h1>تفاصيل الطلب</h1>
+                                    <!-- تفاصيل الطلب-->
+                                    <div class="row tab-data">
+                                        <div class="col-5">
+                                            <h3 class="title mb-3"> البيانات الشخصية</h3>
+                                            <!-- تاريخ الميلاد   -->
+                                            <div class="row mb-3">
+                                                <div class="col-6 labels">
+                                                    <p> تاريخ الميلاد </p>
+                                                </div>
+                                                <div class="col-6 data text-break">
+                                                    <p> {{ $loan->date_of_birth }} </p>
+                                                </div>
                                             </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{ $loan->date_of_birth }} </p>
-                                            </div>
-                                        </div>
 
-                                        <!--   الحالة الاجتماعية -->
-                                        <div class="row mb-3">
-                                            <div class="col-6 labels">
-                                                <p> الحالة الاجتماعية </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                @switch($loan->social_status)
-                                                    @case(0)
-                                                        <p>متزوجة </p>
-                                                    @break
-                                                    @case(1)
-                                                        <p> مطلقة </p>
-                                                    @break
-                                                    @case (2)
-                                                        <p> ارملة </p>
-                                                    @break
-                                                    @case (3)
-                                                        <p> عزباء </p>
-                                                    @break
+                                            <!--   الحالة الاجتماعية -->
+                                            <div class="row mb-3">
+                                                <div class="col-6 labels">
+                                                    <p> الحالة الاجتماعية </p>
+                                                </div>
+                                                <div class="col-6 data text-break">
+                                                    @switch($loan->social_status)
+                                                        @case(0)
+                                                            <p>متزوجة </p>
+                                                        @break
 
-                                                @endswitch
+                                                        @case(1)
+                                                            <p> مطلقة </p>
+                                                        @break
 
-                                            </div>
-                                        </div>
+                                                        @case (2)
+                                                            <p> ارملة </p>
+                                                        @break
 
-                                        <!--    عدد الأطفال  -->
-                                        <div class="row mb-3">
-                                            <div class="col-6 labels">
-                                                <p> عدد الأطفال </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{ $loan->number_of_children }}</p>
-                                            </div>
-                                        </div>
+                                                        @case (3)
+                                                            <p> عزباء </p>
+                                                        @break
+                                                    @endswitch
 
-                                        <!--    أبناء من ذوي الاحتياجات الخاصة  -->
-                                        <div class="row mb-3">
-                                            <div class="col-6 labels">
-                                                <p> أبناء من ذوي الاحتياجات الخاصة </p>
+                                                </div>
                                             </div>
-                                            <div class="col-6 data text-break">
-                                                <p>{{ $loan->have_special_case ? 'يوجد' : ' لا يوجد' }}
-                                                </p>
-                                            </div>
-                                        </div>
 
-                                        {{-- <!--    عنوان مقدم الطلب   -->
+                                            <!--    عدد الأطفال  -->
+                                            <div class="row mb-3">
+                                                <div class="col-6 labels">
+                                                    <p> عدد الأطفال </p>
+                                                </div>
+                                                <div class="col-6 data text-break">
+                                                    <p> {{ $loan->number_of_children }}</p>
+                                                </div>
+                                            </div>
+
+                                            <!--    أبناء من ذوي الاحتياجات الخاصة  -->
+                                            <div class="row mb-3">
+                                                <div class="col-6 labels">
+                                                    <p> أبناء من ذوي الاحتياجات الخاصة </p>
+                                                </div>
+                                                <div class="col-6 data text-break">
+                                                    <p>{{ $loan->have_special_case ? 'يوجد' : ' لا يوجد' }}
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            {{-- <!--    عنوان مقدم الطلب   -->
                                         <div class="row">
                                             <div class="col-6 labels">
                                                 <p> عنوان مقدم الطلب
@@ -2300,66 +2432,66 @@
                                                 <p>المدينة / المركز</p>
                                             </div>
                                         </div> --}}
-                                        <!--      الرقم التأميني    -->
-                                        <div class="row mb-3">
-                                            <div class="col-4 labels">
-                                                <p> الرقم التأميني </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{ $loan->number_of_insurance }} </p>
-                                            </div>
-                                            @if (false)
-                                                <div class="col-2 data text-break">
-                                                    <button class="edit" data-bs-toggle="modal"
-                                                        type="button"
-                                                        data-bs-target="#Num-of-insurance-staticBackdrop">
-                                                        تعديل
-                                                    </button>
+                                            <!--      الرقم التأميني    -->
+                                            <div class="row mb-3">
+                                                <div class="col-4 labels">
+                                                    <p> الرقم التأميني </p>
                                                 </div>
-                                            @endif
+                                                <div class="col-6 data text-break">
+                                                    <p> {{ $loan->number_of_insurance }} </p>
+                                                </div>
+                                                @if (false)
+                                                    <div class="col-2 data text-break">
+                                                        <button class="edit" data-bs-toggle="modal"
+                                                            type="button"
+                                                            data-bs-target="#Num-of-insurance-staticBackdrop">
+                                                            تعديل
+                                                        </button>
+                                                    </div>
+                                                @endif
+
+                                            </div>
 
                                         </div>
 
-                                    </div>
-
-                                    <div class="col-1 divider">
-                                        <hr class="h-100">
-                                    </div>
-
-                                    <div class="col-6">
-                                        <h3 class="title mb-3"> بيانات المشروع </h3>
-                                        <!--   الخبرات السابقة   -->
-                                        <div class="row mb-3">
-                                            <div class="col-6 labels">
-                                                <p> الخبرات السابقة </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{ $loan->have_experince ? 'يوجد' : 'لا يوجد' }}</p>
-                                            </div>
+                                        <div class="col-1 divider">
+                                            <hr class="h-100">
                                         </div>
 
-                                        <!--   سنوات الخبرة -->
-                                        <div class="row mb-3">
-                                            <div class="col-6 labels">
-                                                <p> سنوات الخبرة </p>
+                                        <div class="col-6">
+                                            <h3 class="title mb-3"> بيانات المشروع </h3>
+                                            <!--   الخبرات السابقة   -->
+                                            <div class="row mb-3">
+                                                <div class="col-6 labels">
+                                                    <p> الخبرات السابقة </p>
+                                                </div>
+                                                <div class="col-6 data text-break">
+                                                    <p> {{ $loan->have_experince ? 'يوجد' : 'لا يوجد' }}</p>
+                                                </div>
                                             </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{ $loan->number_of_experice_years }}</p>
-                                            </div>
-                                        </div>
 
-                                        <!--    مقر المشروع  -->
-                                        <div class="row mb-3">
-                                            <div class="col-6 labels">
-                                                <p> مقر المشروع </p>
+                                            <!--   سنوات الخبرة -->
+                                            <div class="row mb-3">
+                                                <div class="col-6 labels">
+                                                    <p> سنوات الخبرة </p>
+                                                </div>
+                                                <div class="col-6 data text-break">
+                                                    <p> {{ $loan->number_of_experice_years }}</p>
+                                                </div>
                                             </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{ $loan->address_project }}</p>
-                                            </div>
-                                        </div>
 
-                                        <!--    عنوان مقر المشروع  -->
-                                        {{-- <div class="row mb-3">
+                                            <!--    مقر المشروع  -->
+                                            <div class="row mb-3">
+                                                <div class="col-6 labels">
+                                                    <p> مقر المشروع </p>
+                                                </div>
+                                                <div class="col-6 data text-break">
+                                                    <p> {{ $loan->address_project }}</p>
+                                                </div>
+                                            </div>
+
+                                            <!--    عنوان مقر المشروع  -->
+                                            {{-- <div class="row mb-3">
                                         <div class="col-6 labels">
                                             <p> عنوان مقر المشروع </p>
                                         </div>
@@ -2370,77 +2502,83 @@
                                         </div>
                                     </div> --}}
 
-                                        <!--    شركاء آخرون   -->
-                                        <div class="row mb-3">
-                                            <div class="col-6 labels">
-                                                <p> شركاء آخرون </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                @if (count($loan->userPartners) > 0)
-                                                    @foreach ($loan->userPartners as $partener)
-                                                        <p>{{ $partener->name }} </p>
-                                                    @endforeach
-                                                @else
-                                                    <p> لا يوجد </p>
-                                                @endif
+                                            <!--    شركاء آخرون   -->
+                                            <div class="row mb-3">
+                                                <div class="col-6 labels">
+                                                    <p> شركاء آخرون </p>
+                                                </div>
+                                                <div class="col-6 data text-break">
+                                                    @if (count($loan->userPartners) > 0)
+                                                        @foreach ($loan->userPartners as $partener)
+                                                            <p>{{ $partener->name }} </p>
+                                                        @endforeach
+                                                    @else
+                                                        <p> لا يوجد </p>
+                                                    @endif
 
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <!--      وصف المشروع    -->
-                                        <div class="row mb-3">
-                                            <div class="col-6 labels">
-                                                <p> وصف المشروع </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{ $loan->description }}
-                                                </p>
+                                            <!--      وصف المشروع    -->
+                                            <div class="row mb-3">
+                                                <div class="col-6 labels">
+                                                    <p> وصف المشروع </p>
+                                                </div>
+                                                <div class="col-6 data text-break">
+                                                    <p> {{ $loan->description }}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- بحث أجتماعى-->
-                            @if($loan->socialReacerch)
-                                <div class="col-12 col-lg-11 mt-4 third-container third-in-print break">
-                                    <h1>بحث أجتماعى</h1>
-                                    <div class="row tab-data">
-                                        <div class="col-5">
-                                            @php
-                                                $husband = $loan->relative()->where('type' , 0)->first();
-                                                $sons = $loan->relative()->where('type' , 1)->get();
-                                            @endphp
-                                            @if($husband)
-                                            <h3 class="title mb-3"> بيانات عن الأسرة </h3>
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> اسم الزوج </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> {{$husband->name}}</p>
-                                                </div>
-                                            </div>
+                                <!-- بحث أجتماعى-->
+                                @if ($loan->socialReacerch)
+                                    <div class="col-12 col-lg-11 mt-4 third-container third-in-print break">
+                                        <h1>بحث أجتماعى</h1>
+                                        <div class="row tab-data">
+                                            <div class="col-5">
+                                                @php
+                                                    $husband = $loan
+                                                        ->relative()
+                                                        ->where('type', 0)
+                                                        ->first();
+                                                    $sons = $loan
+                                                        ->relative()
+                                                        ->where('type', 1)
+                                                        ->get();
+                                                @endphp
+                                                @if ($husband)
+                                                    <h3 class="title mb-3"> بيانات عن الأسرة </h3>
+                                                    <div class="row">
+                                                        <div class="col-6 labels">
+                                                            <p> اسم الزوج </p>
+                                                        </div>
+                                                        <div class="col-6 data text-break">
+                                                            <p> {{ $husband->name }}</p>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> الرقم القومى </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> {{$husband->national_id}}</p>
-                                                </div>
-                                            </div>
+                                                    <div class="row">
+                                                        <div class="col-6 labels">
+                                                            <p> الرقم القومى </p>
+                                                        </div>
+                                                        <div class="col-6 data text-break">
+                                                            <p> {{ $husband->national_id }}</p>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> تاريخ الميلاد </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> {{$husband->dateOfBirth}}</p>
-                                                </div>
-                                            </div>
+                                                    <div class="row">
+                                                        <div class="col-6 labels">
+                                                            <p> تاريخ الميلاد </p>
+                                                        </div>
+                                                        <div class="col-6 data text-break">
+                                                            <p> {{ $husband->dateOfBirth }}</p>
+                                                        </div>
+                                                    </div>
 
-                                            {{-- <div class="row">
+                                                    {{-- <div class="row">
                                                 <div class="col-6 labels">
                                                     <p> تليفون محمول </p>
                                                 </div>
@@ -2449,110 +2587,109 @@
                                                 </div>
                                             </div> --}}
 
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> الوظيفة </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p>{{$husband->job}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> الدخل </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> {{$husband->income}}</p>
-                                                </div>
-                                            </div>
-                                            @endif
-                                            <div class="row">
-                                                <div class="col-3 hr">
-                                                    <hr>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> عدد الابناء </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> {{count($sons)}} </p>
-                                                </div>
-                                            </div>
-                                            @foreach ($sons as $son)
+                                                    <div class="row">
+                                                        <div class="col-6 labels">
+                                                            <p> الوظيفة </p>
+                                                        </div>
+                                                        <div class="col-6 data text-break">
+                                                            <p>{{ $husband->job }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6 labels">
+                                                            <p> الدخل </p>
+                                                        </div>
+                                                        <div class="col-6 data text-break">
+                                                            <p> {{ $husband->income }}</p>
+                                                        </div>
+                                                    </div>
+                                                @endif
                                                 <div class="row">
-                                                    <div class="col-8 social-research-card">
-                                                        <div class="row">
-                                                            <div class="col-6 labels">
-                                                                <p> اسم الابن </p>
-                                                            </div>
-                                                            <div class="col-6 data text-break">
-                                                                <p> {{$son->name}}   </p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-6 labels">
-                                                                <p> تاريخ الميلاد </p>
-                                                            </div>
-                                                            <div class="col-6 data text-break">
-                                                                <p> {{$son->dateOfBirth}} </p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-6 labels">
-                                                                <p> الحالة الاجتماعية </p>
-                                                            </div>
-                                                            <div class="col-6 data text-break">
-                                                                <p> {{$son->social_status}}</p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-6 labels">
-                                                                <p> المرحلة التعليمية </p>
-                                                            </div>
-                                                            <div class="col-6 data text-break">
-                                                                <p> {{$son->eduction_status}} </p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-6 labels">
-                                                                <p> الوظيفة </p>
-                                                            </div>
-                                                            <div class="col-6 data text-break">
-                                                                <p> {{$son->job}} </p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-6 labels">
-                                                                <p> الدخل </p>
-                                                            </div>
-                                                            <div class="col-6 data text-break">
-                                                                <p> {{$son->income}} </p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-6 labels">
-                                                                <p> مقيم بالمنزل </p>
-                                                            </div>
-                                                            <div class="col-6 data text-break">
-                                                                <p> {{$son->in_home ? "نعم" : "لا"}} </p>
-                                                            </div>
-                                                        </div>
+                                                    <div class="col-3 hr">
+                                                        <hr>
                                                     </div>
                                                 </div>
 
-                                            @endforeach
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> عدد الابناء </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> {{ count($sons) }} </p>
+                                                    </div>
+                                                </div>
+                                                @foreach ($sons as $son)
+                                                    <div class="row">
+                                                        <div class="col-8 social-research-card">
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> اسم الابن </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $son->name }} </p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> تاريخ الميلاد </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $son->dateOfBirth }} </p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> الحالة الاجتماعية </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $son->social_status }}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> المرحلة التعليمية </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $son->eduction_status }} </p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> الوظيفة </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $son->job }} </p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> الدخل </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $son->income }} </p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-6 labels">
+                                                                    <p> مقيم بالمنزل </p>
+                                                                </div>
+                                                                <div class="col-6 data text-break">
+                                                                    <p> {{ $son->in_home ? 'نعم' : 'لا' }} </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
 
 
 
-                                            {{-- <div class="row mt-2">
+                                                {{-- <div class="row mt-2">
                                                 <div class="col-6 labels">
                                                     <p> مصادر اخرى للدخل </p>
                                                 </div>
@@ -2562,161 +2699,162 @@
                                             </div> --}}
 
 
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> اجمالي الدخل </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> ٢٠٠٠ </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-1 divider">
-                                            <hr>
-                                        </div>
-
-                                        <div class="col-6">
-                                            <h3 class="title mb-3"> بيانات عن حالة المنزل </h3>
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> ملكيه المنزل </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> {{$loan->socialReacerch->is_owner ? "ملك" : "إيجار"}} </p>
-                                                </div>
-                                            </div>
-                                            @if(!$loan->socialReacerch->is_owner)
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> قيمة الايجار </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> {{$loan->socialReacerch->rent}}</p>
-                                                </div>
-                                            </div>
-                                            @endif
-
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> عدد الغرف </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> {{$loan->socialReacerch->number_of_rooms}}</p>
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> اجمالي الدخل </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> ٢٠٠٠ </p>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> حمام مشترك </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> {{$loan->socialReacerch->is_shared_bathroom ? "نعم" : "لا"}}  </p>
-                                                </div>
+                                            <div class="col-1 divider">
+                                                <hr>
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> حالة المنزل </p>
+                                            <div class="col-6">
+                                                <h3 class="title mb-3"> بيانات عن حالة المنزل </h3>
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> ملكيه المنزل </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> {{ $loan->socialReacerch->is_owner ? 'ملك' : 'إيجار' }}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-6 data text-break">
-                                                    @switch($loan->socialReacerch->houes_status)
-                                                        @case(1)
-                                                        <p> جيدة </p>
-                                                            @break
-                                                        @case(2)
-                                                        <p> متوسطة </p>
-                                                            @break
+                                                @if (!$loan->socialReacerch->is_owner)
+                                                    <div class="row">
+                                                        <div class="col-6 labels">
+                                                            <p> قيمة الايجار </p>
+                                                        </div>
+                                                        <div class="col-6 data text-break">
+                                                            <p> {{ $loan->socialReacerch->rent }}</p>
+                                                        </div>
+                                                    </div>
+                                                @endif
 
-                                                        @default
-                                                            <p> سيئة </p>
-
-                                                    @endswitch
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> عدد الغرف </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> {{ $loan->socialReacerch->number_of_rooms }}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> أحتياجات المنزل </p>
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> حمام مشترك </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> {{ $loan->socialReacerch->is_shared_bathroom ? 'نعم' : 'لا' }}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-6 data text-break">
-                                                    <p>{{$loan->socialReacerch->house_needs}} </p>
-                                                </div>
-                                            </div>
 
-
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> حالة الأثاث </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    @switch($loan->socialReacerch->furniture_status)
-                                                        @case(1)
-                                                        <p> جيدة </p>
-                                                            @break
-                                                        @case(2)
-                                                        <p> متوسطة </p>
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> حالة المنزل </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        @switch($loan->socialReacerch->houes_status)
+                                                            @case(1)
+                                                                <p> جيدة </p>
                                                             @break
 
-                                                        @default
-                                                            <p> سيئه </p>
+                                                            @case(2)
+                                                                <p> متوسطة </p>
+                                                            @break
 
-                                                    @endswitch
+                                                            @default
+                                                                <p> سيئة </p>
+                                                        @endswitch
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> تفصيلها </p>
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> أحتياجات المنزل </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p>{{ $loan->socialReacerch->house_needs }} </p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-6 data text-break">
-                                                    <p>{{$loan->socialReacerch->furniture_description}}  </p>
-                                                </div>
-                                            </div>
 
 
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> ملاحظات على حالة الأسرة </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> {{$loan->socialReacerch->notes ?? "لا يوجد"}} </p>
-                                                </div>
-                                            </div>
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> حالة الأثاث </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        @switch($loan->socialReacerch->furniture_status)
+                                                            @case(1)
+                                                                <p> جيدة </p>
+                                                            @break
 
-                                            <h3 class="title mb-3 mt-5"> الملف الطبي </h3>
-                                            @foreach ($loan->illnesses as $illness)
-                                            <!--       اسم المريض    -->
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> اسم المريض </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> {{$illness->name}} </p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> نوع المرض </p>
-                                                </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> {{$illness->type}}</p>
-                                                </div>
-                                            </div>
+                                                            @case(2)
+                                                                <p> متوسطة </p>
+                                                            @break
 
-                                            <!--          اسماء الادويه    -->
-                                            <div class="row">
-                                                <div class="col-6 labels">
-                                                    <p> اسماء الادويه </p>
+                                                            @default
+                                                                <p> سيئه </p>
+                                                        @endswitch
+                                                    </div>
                                                 </div>
-                                                <div class="col-6 data text-break">
-                                                    <p> {{$illness->drugs}} </p>
-                                                </div>
-                                            </div>
-                                        @endforeach
 
-                                                    {{--
-                                            <h3 class="title mb-3 mt-5"> خبرات الاسره في مجال المشروع </h3>
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> تفصيلها </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p>{{ $loan->socialReacerch->furniture_description }} </p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> ملاحظات على حالة الأسرة </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> {{ $loan->socialReacerch->notes ?? 'لا يوجد' }} </p>
+                                                    </div>
+                                                </div>
+
+                                                <h3 class="title mb-3 mt-5"> الملف الطبي </h3>
+                                                @foreach ($loan->illnesses as $illness)
+                                                    <!--       اسم المريض    -->
+                                                    <div class="row">
+                                                        <div class="col-6 labels">
+                                                            <p> اسم المريض </p>
+                                                        </div>
+                                                        <div class="col-6 data text-break">
+                                                            <p> {{ $illness->name }} </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6 labels">
+                                                            <p> نوع المرض </p>
+                                                        </div>
+                                                        <div class="col-6 data text-break">
+                                                            <p> {{ $illness->type }}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--          اسماء الادويه    -->
+                                                    <div class="row">
+                                                        <div class="col-6 labels">
+                                                            <p> اسماء الادويه </p>
+                                                        </div>
+                                                        <div class="col-6 data text-break">
+                                                            <p> {{ $illness->drugs }} </p>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+
+                                                {{-- <h3 class="title mb-3 mt-5"> خبرات الاسره في مجال المشروع </h3>
 
 
                                             <div class="row">
@@ -2726,331 +2864,329 @@
                                                 </div>
 
                                             </div> --}}
+                                            </div>
                                         </div>
-                                    </div>
                                     @else
-
-                                </div>
-                            @endif
-                            <!--استعلام ميداني-->
-                            @if ($loan->fieldInquiry)
-
-
-                            <div class="col-12 col-lg-11 mt-4 third-container third-in-print break">
-
-                                <h1>استعلام ميداني</h1>
-                                <div class="row tab-data">
-                                    <div class="col-5">
-                                        <h3 class="title mb-3"> بيانات عن العميلة </h3>
-
-                                        <div class="row">
-                                            <div class="col-6 labels">
-                                                <p> سمعة العميلة </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                @switch($loan->socialReacerch->furniture_status)
-                                                    @case(1)
-                                                    <p> جيدة </p>
-                                                        @break
-                                                    @case(2)
-                                                    <p> متوسطة </p>
-                                                        @break
-
-                                                    @default
-                                                        <p> سيئه </p>
-
-                                                @endswitch
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row">
-                                            <div class="col-6 labels">
-                                                <p> سداد القروض سابقة </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                <p> منتظم</p>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row">
-                                            <div class="col-3 hr">
-                                                <hr>
-                                            </div>
-                                        </div>
-
-                                        <h3 class="title mb-3"> بيانات عن السكن </h3>
-
-                                        <div class="row">
-                                            <div class="col-6 labels">
-                                                <p> وصف السكن </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{ $loan->fieldInquiry->home_description }}</p>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row">
-                                            <div class="col-6 labels">
-                                                <p> ملكية السكن </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{$loan->fieldInquiry->is_owner ? "ملك" : "إيجار"}}  </p>
-                                            </div>
-                                        </div>
-                                        @if(!$loan->fieldInquiry->is_owner)
-
-                                        <div class="row">
-                                            <div class="col-6 labels">
-                                                <p> قيمة الإيجار الشهري </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{$loan->fieldInquiry->rent}} </p>
-                                            </div>
-                                        </div>
-                                        @endif
-
                                     </div>
-
-                                    <div class="col-1 divider">
-                                        <hr>
-                                    </div>
-
-                                    <div class="col-6">
-                                        <h3 class="title mb-3"> بيانات عن المشروع </h3>
-
-                                        <div class="row">
-                                            <div class="col-6 labels">
-                                                <p> وصف المشروع </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{ $loan->fieldInquiry->project_description }}
-                                                </p>
-                                            </div>
-                                        </div>
+                                @endif
+                                <!--استعلام ميداني-->
+                                @if ($loan->fieldInquiry)
 
 
-                                        <div class="row">
-                                            <div class="col-6 labels">
-                                                <p> نوع المشروع </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{ $loan->fieldInquiry->project_type }}</p>
-                                            </div>
-                                        </div>
+                                    <div class="col-12 col-lg-11 mt-4 third-container third-in-print break">
 
+                                        <h1>استعلام ميداني</h1>
+                                        <div class="row tab-data">
+                                            <div class="col-5">
+                                                <h3 class="title mb-3"> بيانات عن العميلة </h3>
 
-                                        <div class="row">
-                                            <div class="col-6 labels">
-                                                <p> تكلفة المشروع </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{ $loan->fieldInquiry->project_cost }}</p>
-                                            </div>
-                                        </div>
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> سمعة العميلة </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        @switch($loan->socialReacerch->furniture_status)
+                                                            @case(1)
+                                                                <p> جيدة </p>
+                                                            @break
 
+                                                            @case(2)
+                                                                <p> متوسطة </p>
+                                                            @break
 
-                                        <div class="row">
-                                            <div class="col-6 labels">
-                                                <p> العائد المتوقع </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{ $loan->fieldInquiry->project_revenue }} </p>
-                                            </div>
-                                        </div>
+                                                            @default
+                                                                <p> سيئه </p>
+                                                        @endswitch
 
-
-                                        <div class="row">
-                                            <div class="col-6 labels">
-                                                <p> مدة المشروع بالسنين </p>
-                                            </div>
-                                            <div class="col-6 data text-break">
-                                                <p> {{ $loan->fieldInquiry->project_period }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @else
-
-                            </div>
-                            @endif
-                            <!--دراسة الجدوى-->
-                            @if (count($costs))
-                            <div class="col-12 col-lg-11 mt-4 third-container third-in-print break">
-                                <h1>دراسة الجدوى</h1>
-
-                                                <div class="row d-flex justify-content-center">
-                                                    <div class="col-11">
-                                                        @if (isset($costs[0]))
-                                                            <h3 class="title mb-3 mt-60"> التكاليف الاستثمارية </h3>
-                                                            <table cellpadding="50" cellspacing="50"
-                                                                class="table details-table table-borderless">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th class="first" colspan="2">البند
-                                                                        </th>
-                                                                        <th class="small-th">الكمية</th>
-                                                                        <th class="small-th">سعر الوحدة</th>
-                                                                        <th class="small-th">الاجمالي</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    @php
-                                                                        $total = 0;
-                                                                    @endphp
-                                                                    @foreach ($costs[0] as $cost)
-                                                                        <tr>
-                                                                            <td class="row-data text-center">
-                                                                                {{ $loop->index + 1 }} </td>
-                                                                            <td class="row-data">
-                                                                                {{ $cost->name }}
-                                                                            </td>
-                                                                            <td class="text-center row-data">
-                                                                                {{ $cost->quantity }} </td>
-                                                                            <td class="text-center row-data">
-                                                                                {{ $cost->price }} جنية</td>
-                                                                            <td class="text-center row-data">
-                                                                                {{ $cost->quantity * $cost->price }}
-                                                                                جنية
-                                                                            </td>
-                                                                            @php
-                                                                                $total += $cost->quantity * $cost->price;
-                                                                            @endphp
-                                                                        </tr>
-                                                                    @endforeach
-
-
-                                                                </tbody>
-
-                                                                <tfoot>
-                                                                    <tr>
-                                                                        <td colspan="4"
-                                                                            class="text-start total-price total-text">
-                                                                            الاجمالي</td>
-                                                                        <td class="total-price">{{ $total }}
-                                                                            جنية
-                                                                        </td>
-                                                                    </tr>
-                                                                </tfoot>
-                                                            </table>
-                                                        @endif
-                                                        @if (isset($costs[1]))
-                                                            <h3 class="title mb-3 mt-60"> التكاليف الشهرية </h3>
-                                                            <table cellpadding="50" cellspacing="50"
-                                                                class="table details-table table-borderless">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th class="first" colspan="2">البند
-                                                                        </th>
-                                                                        <th class="small-th">الكمية</th>
-                                                                        <th class="small-th">سعر الوحدة</th>
-                                                                        <th class="small-th">الاجمالي</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    @php
-                                                                        $total = 0;
-                                                                    @endphp
-                                                                    @foreach ($costs[1] as $cost)
-                                                                        <tr>
-                                                                            <td class="row-data text-center">
-                                                                                {{ $loop->index + 1 }} </td>
-                                                                            <td class="row-data">
-                                                                                {{ $cost->name }}
-                                                                            </td>
-                                                                            <td class="text-center row-data">
-                                                                                {{ $cost->quantity }} </td>
-                                                                            <td class="text-center row-data">
-                                                                                {{ $cost->price }} جنية</td>
-                                                                            <td class="text-center row-data">
-                                                                                {{ $cost->quantity * $cost->price }}
-                                                                                جنية
-                                                                            </td>
-                                                                            @php
-                                                                                $total += $cost->quantity * $cost->price;
-                                                                            @endphp
-                                                                        </tr>
-                                                                    @endforeach
-
-
-                                                                </tbody>
-
-                                                                <tfoot>
-                                                                    <tr>
-                                                                        <td colspan="4"
-                                                                            class="text-start total-price total-text">
-                                                                            الاجمالي</td>
-                                                                        <td class="total-price">{{ $total }}
-                                                                            جنية
-                                                                        </td>
-                                                                    </tr>
-                                                                </tfoot>
-                                                            </table>
-                                                        @endif
-                                                        @if (isset($costs[2]))
-                                                            <h3 class="title mb-3  mt-60"> الإيرادات المتوقعة الشهرية
-                                                            </h3>
-                                                            <table cellpadding="50" cellspacing="50"
-                                                                class="table details-table table-borderless">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th class="first" colspan="2">البند
-                                                                        </th>
-                                                                        <th class="small-th">الكمية</th>
-                                                                        <th class="small-th">سعر الوحدة</th>
-                                                                        <th class="small-th">الاجمالي</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    @php
-                                                                        $total = 0;
-                                                                    @endphp
-                                                                    @foreach ($costs[2] as $cost)
-                                                                        <tr>
-                                                                            <td class="row-data text-center">
-                                                                                {{ $loop->index + 1 }} </td>
-                                                                            <td class="row-data">
-                                                                                {{ $cost->name }}
-                                                                            </td>
-                                                                            <td class="text-center row-data">
-                                                                                {{ $cost->quantity }} </td>
-                                                                            <td class="text-center row-data">
-                                                                                {{ $cost->price }} جنية</td>
-                                                                            <td class="text-center row-data">
-                                                                                {{ $cost->quantity * $cost->price }}
-                                                                                جنية
-                                                                            </td>
-                                                                            @php
-                                                                                $total += $cost->quantity * $cost->price;
-                                                                            @endphp
-                                                                        </tr>
-                                                                    @endforeach
-
-
-                                                                </tbody>
-
-                                                                <tfoot>
-                                                                    <tr>
-                                                                        <td colspan="4"
-                                                                            class="text-start total-price total-text">
-                                                                            الاجمالي</td>
-                                                                        <td class="total-price">{{ $total }}
-                                                                            جنية
-                                                                        </td>
-                                                                    </tr>
-                                                                </tfoot>
-                                                            </table>
-                                                        @endif
                                                     </div>
                                                 </div>
-                                            @else
-                               </div>
-                            @endif
 
-            <!--########################3############# End Tabs in Print ##############################################################-->
+
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> سداد القروض سابقة </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> منتظم</p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-3 hr">
+                                                        <hr>
+                                                    </div>
+                                                </div>
+
+                                                <h3 class="title mb-3"> بيانات عن السكن </h3>
+
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> وصف السكن </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> {{ $loan->fieldInquiry->home_description }}</p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> ملكية السكن </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> {{ $loan->fieldInquiry->is_owner ? 'ملك' : 'إيجار' }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                @if (!$loan->fieldInquiry->is_owner)
+                                                    <div class="row">
+                                                        <div class="col-6 labels">
+                                                            <p> قيمة الإيجار الشهري </p>
+                                                        </div>
+                                                        <div class="col-6 data text-break">
+                                                            <p> {{ $loan->fieldInquiry->rent }} </p>
+                                                        </div>
+                                                    </div>
+                                                @endif
+
+                                            </div>
+
+                                            <div class="col-1 divider">
+                                                <hr>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <h3 class="title mb-3"> بيانات عن المشروع </h3>
+
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> وصف المشروع </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> {{ $loan->fieldInquiry->project_description }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> نوع المشروع </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> {{ $loan->fieldInquiry->project_type }}</p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> تكلفة المشروع </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> {{ $loan->fieldInquiry->project_cost }}</p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> العائد المتوقع </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> {{ $loan->fieldInquiry->project_revenue }} </p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-6 labels">
+                                                        <p> مدة المشروع بالسنين </p>
+                                                    </div>
+                                                    <div class="col-6 data text-break">
+                                                        <p> {{ $loan->fieldInquiry->project_period }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @else
+                                    </div>
+                                @endif
+                                <!--دراسة الجدوى-->
+                                @if (count($costs))
+                                    <div class="col-12 col-lg-11 mt-4 third-container third-in-print break">
+                                        <h1>دراسة الجدوى</h1>
+
+                                        <div class="row d-flex justify-content-center">
+                                            <div class="col-11">
+                                                @if (isset($costs[0]))
+                                                    <h3 class="title mb-3 mt-60"> التكاليف الاستثمارية </h3>
+                                                    <table cellpadding="50" cellspacing="50"
+                                                        class="table details-table table-borderless">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="first" colspan="2">البند
+                                                                </th>
+                                                                <th class="small-th">الكمية</th>
+                                                                <th class="small-th">سعر الوحدة</th>
+                                                                <th class="small-th">الاجمالي</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @php
+                                                                $total = 0;
+                                                            @endphp
+                                                            @foreach ($costs[0] as $cost)
+                                                                <tr>
+                                                                    <td class="row-data text-center">
+                                                                        {{ $loop->index + 1 }} </td>
+                                                                    <td class="row-data">
+                                                                        {{ $cost->name }}
+                                                                    </td>
+                                                                    <td class="text-center row-data">
+                                                                        {{ $cost->quantity }} </td>
+                                                                    <td class="text-center row-data">
+                                                                        {{ $cost->price }} جنية</td>
+                                                                    <td class="text-center row-data">
+                                                                        {{ $cost->quantity * $cost->price }}
+                                                                        جنية
+                                                                    </td>
+                                                                    @php
+                                                                        $total += $cost->quantity * $cost->price;
+                                                                    @endphp
+                                                                </tr>
+                                                            @endforeach
+
+
+                                                        </tbody>
+
+                                                        <tfoot>
+                                                            <tr>
+                                                                <td colspan="4"
+                                                                    class="text-start total-price total-text">
+                                                                    الاجمالي</td>
+                                                                <td class="total-price">{{ $total }}
+                                                                    جنية
+                                                                </td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                @endif
+                                                @if (isset($costs[1]))
+                                                    <h3 class="title mb-3 mt-60"> التكاليف الشهرية </h3>
+                                                    <table cellpadding="50" cellspacing="50"
+                                                        class="table details-table table-borderless">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="first" colspan="2">البند
+                                                                </th>
+                                                                <th class="small-th">الكمية</th>
+                                                                <th class="small-th">سعر الوحدة</th>
+                                                                <th class="small-th">الاجمالي</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @php
+                                                                $total = 0;
+                                                            @endphp
+                                                            @foreach ($costs[1] as $cost)
+                                                                <tr>
+                                                                    <td class="row-data text-center">
+                                                                        {{ $loop->index + 1 }} </td>
+                                                                    <td class="row-data">
+                                                                        {{ $cost->name }}
+                                                                    </td>
+                                                                    <td class="text-center row-data">
+                                                                        {{ $cost->quantity }} </td>
+                                                                    <td class="text-center row-data">
+                                                                        {{ $cost->price }} جنية</td>
+                                                                    <td class="text-center row-data">
+                                                                        {{ $cost->quantity * $cost->price }}
+                                                                        جنية
+                                                                    </td>
+                                                                    @php
+                                                                        $total += $cost->quantity * $cost->price;
+                                                                    @endphp
+                                                                </tr>
+                                                            @endforeach
+
+
+                                                        </tbody>
+
+                                                        <tfoot>
+                                                            <tr>
+                                                                <td colspan="4"
+                                                                    class="text-start total-price total-text">
+                                                                    الاجمالي</td>
+                                                                <td class="total-price">{{ $total }}
+                                                                    جنية
+                                                                </td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                @endif
+                                                @if (isset($costs[2]))
+                                                    <h3 class="title mb-3  mt-60"> الإيرادات المتوقعة الشهرية
+                                                    </h3>
+                                                    <table cellpadding="50" cellspacing="50"
+                                                        class="table details-table table-borderless">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="first" colspan="2">البند
+                                                                </th>
+                                                                <th class="small-th">الكمية</th>
+                                                                <th class="small-th">سعر الوحدة</th>
+                                                                <th class="small-th">الاجمالي</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @php
+                                                                $total = 0;
+                                                            @endphp
+                                                            @foreach ($costs[2] as $cost)
+                                                                <tr>
+                                                                    <td class="row-data text-center">
+                                                                        {{ $loop->index + 1 }} </td>
+                                                                    <td class="row-data">
+                                                                        {{ $cost->name }}
+                                                                    </td>
+                                                                    <td class="text-center row-data">
+                                                                        {{ $cost->quantity }} </td>
+                                                                    <td class="text-center row-data">
+                                                                        {{ $cost->price }} جنية</td>
+                                                                    <td class="text-center row-data">
+                                                                        {{ $cost->quantity * $cost->price }}
+                                                                        جنية
+                                                                    </td>
+                                                                    @php
+                                                                        $total += $cost->quantity * $cost->price;
+                                                                    @endphp
+                                                                </tr>
+                                                            @endforeach
+
+
+                                                        </tbody>
+
+                                                        <tfoot>
+                                                            <tr>
+                                                                <td colspan="4"
+                                                                    class="text-start total-price total-text">
+                                                                    الاجمالي</td>
+                                                                <td class="total-price">{{ $total }}
+                                                                    جنية
+                                                                </td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    @else
+                                    </div>
+                                @endif
+
+                                <!--########################3############# End Tabs in Print ##############################################################-->
                                 <!-- Accept Button click-->
                                 @if ($loan->status >= 6)
                                     <div class="col-12 d-none d-lg-block col-lg-11 mt-4 accept-div acptssss">
