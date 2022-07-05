@@ -2970,6 +2970,14 @@
       display: none !important;
   }
 
+  .nav-tabs .nav-item button.partner:disabled , .dimmed:disabled {
+    /* background-color: #1fbdc3 !important;
+    opacity: 0.6;*/
+    color: #fff !important;
+    background: #afafaf !important;
+    border: 2px solid #afafaf !important;
+}
+
   .dataTables_wrapper .dataTables_paginate , .dataTables_paginate.paging_simple_numbers{
       display: flex !important;
       justify-content: center !important;
