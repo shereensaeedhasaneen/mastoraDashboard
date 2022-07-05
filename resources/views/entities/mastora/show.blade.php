@@ -2294,7 +2294,6 @@
                                                 </svg>
                                                 <h3 class="empty-text text-center mt-3"> لا يوجد بيانات</h3>
                                             </div>
-                                            @endif
                                             <!--End Empty image when delete all attachments -->
                                         </div>
                                         <!--Iscore-->
@@ -2324,7 +2323,6 @@
                                                 </svg>
                                                 <h3 class="empty-text text-center mt-3"> لا يوجد بيانات</h3>
                                             </div>
-                                            @endif
                                             <!--End Empty image when delete all attachments -->
                                         </div>
                                     </div>
