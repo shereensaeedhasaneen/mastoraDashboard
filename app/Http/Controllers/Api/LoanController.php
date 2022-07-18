@@ -74,9 +74,12 @@ class LoanController extends Controller
      * @param  \App\Models\Loan;  $loan
      * @return \Illuminate\Http\Response
      */
-    public function store(LoanDataRequest $request)
-    {   
-        $loan = Loan::create($request->all());
+    public function store(Request $request)
+    { 
+        $request = $request->loan;  
+        $loan = Loan::create([
+            'loan_uniqe_id' => ''
+        ]);
         if($loan){
             return response($loan, 200);
         }

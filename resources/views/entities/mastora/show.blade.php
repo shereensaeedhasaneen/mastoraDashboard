@@ -1917,6 +1917,9 @@
                                                             </div>
                                                             <div class="col-6 data text-break">
                                                                 @switch($loan->socialReacerch->furniture_status)
+                                                                    @case(0)
+                                                                    <p> سيئه </p>
+                                                                    @break
                                                                     @case(1)
                                                                         <p> جيدة </p>
                                                                     @break
