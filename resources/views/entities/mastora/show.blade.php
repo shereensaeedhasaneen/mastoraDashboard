@@ -1911,7 +1911,7 @@
                                                     <div class="col-5">
                                                         <h3 class="title mb-3"> بيانات عن العميلة </h3>
 
-                                                        <div class="row">
+                                                        {{-- <div class="row">
                                                             <div class="col-6 labels">
                                                                 <p> سمعة العميلة </p>
                                                             </div>
@@ -1923,17 +1923,15 @@
                                                                     @case(1)
                                                                         <p> جيدة </p>
                                                                     @break
-
                                                                     @case(2)
                                                                         <p> متوسطة </p>
                                                                     @break
-
                                                                     @default
                                                                         <p> سيئه </p>
                                                                 @endswitch
 
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
 
 
                                                         <div class="row">
