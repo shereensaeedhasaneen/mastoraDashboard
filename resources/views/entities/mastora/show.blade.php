@@ -2875,7 +2875,7 @@
                                     <div class="col-12 col-lg-11 mt-4 third-container third-in-print break">
 
                                         <h1>استعلام ميداني</h1>
-                                        <div class="row tab-data">
+                                        {{-- <div class="row tab-data">
                                             <div class="col-5">
                                                 <h3 class="title mb-3"> بيانات عن العميلة </h3>
 
@@ -3008,7 +3008,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     @else
                                     </div>
                                 @endif
