@@ -16,13 +16,13 @@ class DatabaseSeeder extends Seeder
         activity()->disableLogging();
 
         $this->call([
-            SettingsTableSeeder::class,
-            RolesAndPermissionsSeederNew::class,
+            // SettingsTableSeeder::class,
+            // RolesAndPermissionsSeederNew::class,
             AdminUserSeeder::class,
-            TranslationLanguageSeeder::class,
-            LoanSeeder::class,
-            CountrySeeder::class,
-            BankBranchSeeder::class,
+            // TranslationLanguageSeeder::class,
+            // LoanSeeder::class,
+            // CountrySeeder::class,
+            // BankBranchSeeder::class,
             UserSeeder::class
         ]);
 

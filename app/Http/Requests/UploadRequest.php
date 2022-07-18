@@ -38,7 +38,7 @@ class UploadRequest extends FormRequest
     public function messages()
     {
         return [
-            'national_id_front_file.required' => 'برجاء إدخال صورة الرقم القومى الخلفية' ,
+            'national_id_front_file.required' => 'برجاء إدخال صورة الرقم القومى الأمامية' ,
             'national_id_end_file.required' => ' برجاء إدخال صورة الرقم القومى الخلفية',
             'home_service_file.required' => 'برجاء إدخال إيصال المرافق',
             'rent_file.required' => 'برجاء إدخال صورة العقد ',

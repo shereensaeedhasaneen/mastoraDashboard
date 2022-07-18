@@ -50,7 +50,6 @@ class LoanRequest extends FormRequest
                     "number_of_insurance" => "nullable|numeric|digits:8",
                     "number_of_children" => "numeric",
                     "applicant_address" => "required",
-                    "applicant_city" => "required",
                     "applicant_country" => "required",
                 ];
             case 3 :
@@ -58,7 +57,7 @@ class LoanRequest extends FormRequest
                     "description" => "required",
                     "address_project" => "required",
                     "applicant_address" => "required",
-                    "address_project_city" => "required",
+                    // "address_project_city" => "required",
                     "address_project_country" => "required",
                 ];
             case 4 :
