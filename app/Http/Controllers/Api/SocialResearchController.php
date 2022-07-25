@@ -9,6 +9,7 @@ use App\Services\SocialResearchService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SocialResearchAditinalDataRequest;
 use App\Http\Requests\SocialResearchRequest;
+use App\Http\Resources\Loan\LoanResource;
 use App\Http\Resources\SocialResearch\SocialResearchResource;
 use App\Models\Loan;
 use App\Services\Adapters\Fwmk\Api\FilteringSortingPagination\SocialResearch\IndexingRequest\RequestToRetrieveResourceInterface;
@@ -76,14 +77,21 @@ class SocialResearchController extends Controller
     public function store(SocialResearchRequest $request , Loan $loan)
     {   
         
-        return $request ;
-       
-        // return response()->apiObject(
-        //     200,
-        //     'Retrieve SocialResearch #' . $SocialResearch->id . ' successfully',
-        //     null,
-        //     new SocialResearchResource($SocialResearch)
-        // );
+        $data = $request->social_research;
+        $data['loan_id'] =$loan->id;
+        $data['house_needs'] = implode( '--' , $data['house_needs']);
+        $data['furniture_description'] = implode( '--' ,  $data['furniture_description']);
+        $this->service->makeResourceWebBased($data);
+        if ($request->done) {
+            $loan->is_done_submit = true;
+            $loan->save();
+        }
+        return response()->apiObject(
+            200,
+            'Retrieve Loan successfully',
+            null,
+            new LoanResource($loan)
+        );
     }
     
 }

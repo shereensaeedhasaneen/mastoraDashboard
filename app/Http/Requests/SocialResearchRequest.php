@@ -31,8 +31,8 @@ class SocialResearchRequest extends FormRequest
             "social_research.is_shared_bathroom"=> "required",
             "social_research.houes_status"=> "required",
             "social_research.furniture_status"=> "required",
-            "social_research.house_needs"=> "required",
-            "social_research.furniture_description"=> "required",
+            // "social_research.house_needs"=> "required",
+            // "social_research.furniture_description"=> "required",
             "social_research.notes"=> "nullable",
         ];
     }

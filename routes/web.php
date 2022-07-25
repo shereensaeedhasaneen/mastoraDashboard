@@ -37,6 +37,7 @@ Route::get('/get-user/{partener}', [Web\PartenerController::class , 'showAjax'])
 // tabs add
 Route::resource('loans', Web\LoanController::class);
 Route::resource('partners',Web\PartenerController::class );
+
 Route::post('partners-search',[Web\PartenerController::class , 'search'] );
 Route::post('loans-form/{loan}',[Web\LoanController::class , 'upload'] );
 Route::post('update-loans/{loan}',[Web\LoanController::class , 'updatePartial'] );

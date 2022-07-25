@@ -138,7 +138,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="table-responsive">
                             <table class="table custom-table" id="AllApplications">
 
@@ -146,6 +145,7 @@
 
                                     <tr>
                                         <th scope="col"> اسم الشريك</th>
+                                        <th scope="col">نوع الشريك</th>
                                         <th scope="col">الفرع التابع له</th>
                                         <th scope="col" class="dots"></th>
                                     </tr>
@@ -159,6 +159,9 @@
                                             <td class="clickable pt-39 order-num fw-bold">
                                                 {{ $user->name }}
                                             </td>
+                                            <td class="clickable pt-39 order-num fw-bold">
+                                                جمعية
+                                            </td>
                                             <td class="clickable pt-39 fw-bold text-wrap">
                                                 {{ $user->bank->name }}
                                             </td>
@@ -166,10 +169,6 @@
 
                                             <td class="pt-39">
                                                 <div class="dropdown">
-
-
-
-
                                                             <button class="approave border-0 w-100 h-100 bg-transparent modify-button"  data-bs-toggle="modal" data-attr-id="{{$user->id}}" data-bs-target="#editPartnerModel">
                                                                 <svg class="me-1" id="Component_38_17"
                                                                     data-name="Component 38 – 17"

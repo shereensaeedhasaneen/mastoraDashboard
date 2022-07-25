@@ -62,13 +62,12 @@ class LoanController extends AbstractController
                 $status = LoanStatus::getValue('PARTNERREVIEW');
                 break;
             case UserType::getValue('BRANCHMANGER'):
-                $status = LoanStatus::getValue('CREDITBRANCH')  ;
+                $status = LoanStatus::getValue('CREDITBRANCH');
                 break;
-            case UserType::getValue('CENTERMANGER') :
-                $status = LoanStatus::getValue('CENTERBRANCH')  ;
+            case UserType::getValue('CENTERMANGER'):
+                $status = LoanStatus::getValue('CENTERBRANCH');
                 break;
         }
-        //dd(UserType::getValue('CENTERMANGER'));
         $newLoan = $loan;
         $newLoan->status = $status+1;
         $loan->save();
@@ -108,10 +107,10 @@ class LoanController extends AbstractController
     public function show(Loan $loan)
     {
 
-        $reserchers = User::where('user_type' ,4  )->get();
+        $reserchers = User::where('user_type', 4)->get();
         $costs = $loan->costs->groupBy('type');
-        $partners = User::where('user_type' ,1  )->get();
-        $accounters = User::where('user_type' ,0  )->get();
+        $partners = User::where('user_type', 1)->get();
+        $accounters = User::where('user_type', 0)->get();
         $canEdit = false;
         $status = LoanUserStatus::where(['user_id' => auth()->user()->id , 'loan_id' => $loan->id ])->first();
         if (!$status || (auth()->user()->user_type == 2 && $loan->status == 4)) {
@@ -129,7 +128,6 @@ class LoanController extends AbstractController
     {
         $data = $request->all();
         $data['status']  = 1;
-        //dd($data);
         $loan = $this->service->makeResourceWebBased($data);
 
         return new LoanFormResource($loan);
@@ -239,7 +237,6 @@ class LoanController extends AbstractController
         $loan->save();
         $this->updateStatus( ['status' => 'ASSIGNED' , 'notes' => $request->notes] , $loan);
         return redirect()->back();
-
     }
 
 
@@ -258,27 +255,20 @@ class LoanController extends AbstractController
 
     private function handelFiles(Request $request , $file )
     {
-        
         $fileName = auth()->id() ."_" . $file . '_' . time() . '.'. $request->$file->extension();
-        //dd($fileName , $file);
         $request->$file->move(public_path('file'), $fileName);
-        return $fileName;
-        
+        return $fileName;   
     }
     
     private function handelAdditionalFiles( $file , $key , $loan )
     {
-        //dd($file->extension());
         $additionFile = new AdditionalFile;
         $additionFile->loan_id = $loan->id;
         $fileName = auth()->id() ."_" . $key . '_' . time() . '.'. $file->extension();
         $file->move(public_path('file'), $fileName);
         $additionFile->file_name = $fileName;
         $additionFile->stored_path = $fileName;
-        $additionFile->save();
-
-        
-        
+        $additionFile->save(); 
     }
 
     private function updateStatus($data, Loan $loan)
@@ -333,30 +323,30 @@ class LoanController extends AbstractController
         ]);
     }
 
-    public function upload(UploadRequest $request , Loan $loan)
+    public function upload(UploadRequest $request, Loan $loan)
     {
         if($request->hasFile('national_id_front_file')){
-            $national_id_front_file = $this->handelFiles($request ,'national_id_front_file' );
+            $national_id_front_file = $this->handelFiles($request, 'national_id_front_file' );
         }
         
         if($request->hasFile('national_id_end_file')){
-            $national_id_end_file = $this->handelFiles($request ,'national_id_end_file' );
+            $national_id_end_file = $this->handelFiles($request, 'national_id_end_file' );
         }
 
         if($request->hasFile('home_service_file')){
-            $home_service_file = $this->handelFiles($request  , 'home_service_file' );
+            $home_service_file = $this->handelFiles($request, 'home_service_file' );
         }
 
         if($request->hasFile('rent_file')){
-            $rent_file = $this->handelFiles($request   , 'rent_file');
+            $rent_file = $this->handelFiles($request, 'rent_file');
         } 
 
         if($request->hasFile('price_file')){
-            $price_file = $this->handelFiles($request  , 'price_file');
+            $price_file = $this->handelFiles($request, 'price_file');
         }
 
         if($request->hasFile('partner_file')){
-            $partner_file =$this->handelFiles($request  ,'partner_file' );
+            $partner_file =$this->handelFiles($request, 'partner_file' );
         }
         $loanArray = $loan->toArray();
         $loanArray['national_id_front_file'] = $national_id_front_file;
@@ -381,7 +371,7 @@ class LoanController extends AbstractController
 
     public function deleteAdditionalFiles($id)
     {
-        $file =AdditionalFile::find($id);
+        $file = AdditionalFile::find($id);
         $file->delete();
         return redirect()->back();
     }
@@ -392,50 +382,41 @@ class LoanController extends AbstractController
         $loan = Loan::find($id);
         $loanArray = $loan->toArray();
         if($request->hasFile('national_id_front_file')){
-            $national_id_front_file = $this->handelFiles($request ,'national_id_front_file' );
+            $national_id_front_file = $this->handelFiles($request, 'national_id_front_file' );
             $loanArray['national_id_front_file'] = $national_id_front_file;
-
         }
 
         if($request->hasFile('national_id_end_file')){
-            $national_id_end_file = $this->handelFiles($request ,'national_id_end_file' );
+            $national_id_end_file = $this->handelFiles($request, 'national_id_end_file' );
             $loanArray['national_id_end_file'] = $national_id_end_file;
-
         }
 
         if($request->hasFile('home_service_file')){
-            $home_service_file = $this->handelFiles($request  , 'home_service_file' );
+            $home_service_file = $this->handelFiles($request, 'home_service_file' );
             $loanArray['home_service_file'] = $home_service_file;
-
         }
 
         if($request->hasFile('rent_file')){
-            $rent_file = $this->handelFiles($request   , 'rent_file');
+            $rent_file = $this->handelFiles($request, 'rent_file');
             $loanArray['rent_file'] = $rent_file;
-
         } 
 
         if($request->hasFile('price_file')){
-            $price_file = $this->handelFiles($request  , 'price_file');
+            $price_file = $this->handelFiles($request, 'price_file');
             $loanArray['price_file'] = $price_file;
-
         }
 
         if($request->hasFile('partner_file')){
-            $partner_file =$this->handelFiles($request  ,'partner_file' );
+            $partner_file =$this->handelFiles($request, 'partner_file' );
             $loanArray['partner_file'] = $partner_file;
-
         }
 
         if($request->additionalFiles){
-            //dd($request->additionalFiles);
             foreach ($request->additionalFiles as $key =>  $value) {
-                //dd( $value);
-                $partner_file =$this->handelAdditionalFiles($value , $key , $loan  );
+                $partner_file =$this->handelAdditionalFiles($value, $key, $loan);
                 $loanArray['partner_file'] = $partner_file;
             }
         }
-        //dd($loan);
         
         $loan->update($loanArray);
 

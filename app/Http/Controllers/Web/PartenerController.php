@@ -216,4 +216,9 @@ class PartenerController extends AbstractController
         return view('entities.mastora.form')->with( 'countries' , $countries )->with('branches' ,$branches);
     }
 
+    public function addPartnerForm()
+    {
+        return view('entities.mastora.addNewPartner');
+    }
+
 }

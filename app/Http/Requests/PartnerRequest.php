@@ -26,7 +26,7 @@ class PartnerRequest extends FormRequest
         return [
             "name" => "required", 
             "active" => "required|numeric", 
-            "email" => "required", 
+            "email" => "required|unique:users", 
             "bank_branch_id" => "required|numeric|min:1", 
         ];
         
